@@ -5,23 +5,12 @@
 $(function () { //para la creación de los controles
     //agrega los eventos las capas necesarias
     $("#enviar").click(function () {
-        addOrUpdateRutas(false);
+        addOrUpdateRutas();
     });
-    
     //agrega los eventos las capas necesarias
     $("#cancelar").click(function () {
         cancelAction();
-    });    
-    
-    //agrega los eventos las capas necesarias
-    $("#buscar").click(function () {
-        showRutasByID();
-    });
-    
-    //agrega los eventos las capas necesarias
-    $("#borrar").click(function () {
-        deleteRutasByID();
-    });
+    });    //agrega los eventos las capas necesarias
 
     $("#btMostarForm").click(function () {
         //muestra el fomurlaior
@@ -29,6 +18,9 @@ $(function () { //para la creación de los controles
         $("#typeAction").val("add_rutas");
         $("#myModalFormulario").modal();
     });
+    
+    
+    
 });
 
 //*********************************************************************
@@ -36,18 +28,19 @@ $(function () { //para la creación de los controles
 //*********************************************************************
 
 $(document).ready(function () {
-    showALLRutas(true);  
+    cargarTablas();
+    
 });
 
 //*********************************************************************
 //Agregar o modificar la información
 //*********************************************************************
 
-function addOrUpdateRutas(ocultarModalBool) {
+function addOrUpdateRutas() {
     //Se envia la información por ajax
     if (validar()) {
         $.ajax({
-            url: '../backend/agenda/controller/rutasController.php',
+            url: '../backend/controller/rutasController.php',
             data: {
                 action:               $("#typeAction").val(),
                 idRuta:               $("#txtRuta").val(),
@@ -65,7 +58,7 @@ function addOrUpdateRutas(ocultarModalBool) {
                 if (typeOfMessage === "M~") { //si todo esta corecto
                     swal("Confirmacion", responseText, "success");
                     clearFormRutas();
-                    showALLRutas();
+                    $("#dt_rutas").DataTable().ajax.reload();
                 } else {//existe un error
                     swal("Error", responseText, "error");
                 }
@@ -104,7 +97,8 @@ function validar() {
     if ($("#txtPrecio").val() === "") {
         validacion = false;
     }
-    
+
+
     return validacion;
 }
 
@@ -125,30 +119,7 @@ function cancelAction() {
     $("#myModalFormulario").modal("hide");
 }
 
-//*****************************************************************
-//*****************************************************************
 
-function showALLRutas(ocultarModalBool) {
-    //Se envia la información por ajax
-    $.ajax({
-        url: '../backend/agenda/controller/rutasController.php',
-        data: {
-            action: "showAll_rutas"
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las rutas en la base de datos");
-            if (ocultarModalBool) {
-                ocultarModal("myModal");
-            }
-        },
-        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            $("#divResult").html(data);
-            // se oculta el modal esta funcion se encuentra en el utils.js
-            
-        },
-        type: 'POST'
-    });
-}
 
 //*****************************************************************
 //*****************************************************************
@@ -156,13 +127,13 @@ function showALLRutas(ocultarModalBool) {
 function showRutasByID() {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/agenda/controller/rutasController.php',
+        url: '../backend/controller/rutasController.php',
         data: {
             action: "show_rutas",
             idRuta: $("#txtRuta").val()
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las rutas en la base de datos");
+            swal("Error", "Se presento un error al consultar la informacion", "error");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             var objRutasJSon = JSON.parse(data);
@@ -172,6 +143,8 @@ function showRutasByID() {
             $("#txtPrecio").val(objRutasJSon.Precio);
             $("#typeAction").val("update_rutas");
             $("#myModalFormulario").modal();
+            
+            swal("Confirmacion", "Los datos de la persona fueron cargados correctamente", "success");
         },
         type: 'POST'
     });
@@ -180,37 +153,119 @@ function showRutasByID() {
 //*****************************************************************
 //*****************************************************************
 
-function deleteRutasByID() {
+function deleteRutasByID(PK_cedula) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/agenda/controller/rutasController.php',
+        url: '../backend/controller/rutasController.php',
         data: {
             action: "delete_rutas",
             idRuta: $("#txtRuta").val()
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las rutas en la base de datos");
+            swal("Error", "Se presento un error al eliminar la informacion", "error");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            var responseText = data.substring(2);
-            var typeOfMessage = data.substring(0, 2);
+            var responseText = data.trim().substring(2);
+            var typeOfMessage = data.trim().substring(0, 2);
             if (typeOfMessage === "M~") { //si todo esta corecto
-                mostrarModal("myModal", "Resultado de la acción", responseText);
-                showALLRutas(false);
+                swal("Confirmacion", responseText, "success");
+                clearFormRutas();
+                $("#dt_rutas").DataTable().ajax.reload();
             } else {//existe un error
-                mostrarModal("myModal", "Error", responseText);
+                swal("Error", responseText, "error");
             }
         },
         type: 'POST'
     });
 }
 
-function mostrarModal(idDiv, titulo, mensaje) {
-    $("#" + idDiv + "Title").html(titulo);
-    $("#" + idDiv + "Message").html(mensaje);
-    $("#" + idDiv).modal();
+
+
+
+//*******************************************************************************
+//Metodo para cargar las tablas
+//*******************************************************************************
+
+
+function cargarTablas() {
+
+
+
+    var dataTableRutas_const = function () {
+        if ($("#dt_rutas").length) {
+            $("#dt_rutas").DataTable({
+                dom: "Bfrtip",
+                bFilter: false,
+                ordering: false,
+                buttons: [
+                    {
+                        extend: "copy",
+                        className: "btn-sm",
+                        text: "Copiar"
+                    },
+                    {
+                        extend: "csv",
+                        className: "btn-sm",
+                        text: "Exportar a CSV"
+                    },
+                    {
+                        extend: "print",
+                        className: "btn-sm",
+                        text: "Imprimir"
+                    }
+
+                ],
+                "columnDefs": [
+                    {
+                        targets: 6,
+                        className: "dt-center",
+                        render: function (data, type, row, meta) {
+                            var botones = '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="showRutasByID(\''+row[0]+'\');">Cargar</button> ';
+                            botones += '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="deleteRutasByID(\''+row[0]+'\');">Eliminar</button>';
+                            return botones;
+                        }
+                    }
+
+                ],
+                pageLength: 1,
+                language: dt_lenguaje_espanol,
+                ajax: {
+                    url: '../backend/controller/rutasController.php',
+                    type: "POST",
+                    data: function (d) {
+                        return $.extend({}, d, {
+                            action: "showAll_rutas"
+                        });
+                    }
+                },
+                drawCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                    $('#dt_rutas').DataTable().columns.adjust().responsive.recalc();
+                }
+            });
+        }
+    };
+
+
+
+    TableManageButtons = function () {
+        "use strict";
+        return {
+            init: function () {
+                dataTableRutas_const();
+                $(".dataTables_filter input").addClass("form-control input-rounded ml-sm");
+            }
+        };
+    }();
+
+    TableManageButtons.init();
 }
 
-function ocultarModal(idDiv) {
-    $("#" + idDiv).modal("hide");
-}
+//*******************************************************************************
+//evento que reajusta la tabla en el tamaño de la pantall
+//*******************************************************************************
+
+window.onresize = function () {
+    $('#dt_rutas').DataTable().columns.adjust().responsive.recalc();
+};
+
+
