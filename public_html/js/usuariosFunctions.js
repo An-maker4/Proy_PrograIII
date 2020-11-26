@@ -1,6 +1,26 @@
 //*****************************************************************
 //Inyección de eventos en el HTML
 //*****************************************************************
+var dt_lenguaje_espanol = {
+    decimal:        "",
+    emptyTable:     "No existe información",
+    info:           "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
+    infoEmpty:      "Mostrando 0 a 0 de 0 registros",
+    infoFiltered:   "(filtered from _MAX_ total entries)",
+    infoPostFix:    "",
+    thousands:      ",",
+    lengthMenu:     "Mostrar _MENU_ registros por página",
+    loadingRecords: "Cargando, por favor espere...",
+    processing:     "Procesando...",
+    search:         "Buscar ",
+    zeroRecords:    "No se encontraron registros que cumplan con el criterio",
+    paginate: {
+        first:      "Primero",
+        last:       "Último",
+        next:       "Siguiente",
+        previous:   "Anterior"
+    }
+};
 
 $(function () { //para la creación de los controles
     //agrega los eventos las capas necesarias
@@ -12,16 +32,6 @@ $(function () { //para la creación de los controles
     $("#cancelar").click(function () {
         cancelAction();
     });    
-    
-    //agrega los eventos las capas necesarias
-    $("#buscar").click(function () {
-        showPersonasByID();
-    });
-    
-    //agrega los eventos las capas necesarias
-    $("#borrar").click(function () {
-        deletePersonasByID();
-    });
     
     $("#btMostarForm").click(function () {
         //muestra el fomurlaior
@@ -36,7 +46,7 @@ $(function () { //para la creación de los controles
 //*********************************************************************
 
 $(document).ready(function () {
-    showALLPersonas(true);  
+    cargarTablas();   
 });
 
 //*********************************************************************
@@ -73,7 +83,7 @@ function addOrUpdatePersonas(ocultarModalBool) {
                 if (typeOfMessage === "M~") { //si todo esta corecto
                     swal("Confirmacion", responseText, "success");
                     clearFormPersonas();
-                    showALLPersonas();
+                    $("#dt_personas").DataTable().ajax.reload();
                 } else {//existe un error
                     swal("Error", responseText, "error");
                 }
@@ -164,58 +174,33 @@ function cancelAction() {
 //*****************************************************************
 //*****************************************************************
 
-function showALLPersonas(ocultarModalBool) {
-    //Se envia la información por ajax
-    $.ajax({
-        url: '../backend/agenda/controller/personasController.php',
-        data: {
-            action: "showAll_personas"
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las personas en la base de datos");
-            if (ocultarModalBool) {
-                ocultarModal("myModal");
-            }
-        },
-        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            $("#divResult").html(data);
-            // se oculta el modal esta funcion se encuentra en el utils.js
-            
-        },
-        type: 'POST'
-    });
-}
-
-//*****************************************************************
-//*****************************************************************
-
-function showPersonasByID() {
+function showPersonasByID(PK_cedula) {
     //Se envia la información por ajax
     $.ajax({
         url: '../backend/agenda/controller/personasController.php',
         data: {
             action: "show_personas",
-            Usuario: $("#txtUsuario").val() 
+            Usuario: PK_cedula
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las personas en la base de datos");
+            swal("Error", "Se presento un error al consultar la informacion", "error");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             var objPersonasJSon = JSON.parse(data);
-            $("#txtUsuario").val(objPersonasJSon.Usuario);
-            $("#txtContrasena").val(objPersonasJSon.Contrasena);
-            $("#txtNombre").val(objPersonasJSon.Nombre);
-            $("#txtApellido1").val(objPersonasJSon.Apellido1);
-            $("#txtApellido2").val(objPersonasJSon.Apellido2);
-            $("#txtCorreo").val(objPersonasJSon.Correo);
-            $("#txtFecha").val(objPersonasJSon.Fecha_Nacimiento);
-            $("#txtDireccion").val(objPersonasJSon.Direccion);
-            $("#txtTel1").val(objPersonasJSon.Telefono1);
-            $("#txtTel2").val(objPersonasJSon.Telefono2);
-            $("#txtTip").val(objPersonasJSon.Tipo_Usuario);
-            $("#txtSexo").val(objPersonasJSon.Sexo);
+            $("#txtUsuario").val(objPersonasJSon.usuario);
+            $("#txtContrasena").val(objPersonasJSon.contrasena);
+            $("#txtNombre").val(objPersonasJSon.nombre);
+            $("#txtApellido1").val(objPersonasJSon.apellido1);
+            $("#txtApellido2").val(objPersonasJSon.apellido2);
+            $("#txtCorreo").val(objPersonasJSon.correo);
+            $("#txtFecha").val(objPersonasJSon.fecha_nacimiento);
+            $("#txtDireccion").val(objPersonasJSon.direccion);
+            $("#txtTel1").val(objPersonasJSon.telefono1);
+            $("#txtTel2").val(objPersonasJSon.telefono2);
+            $("#txtTip").val(objPersonasJSon.tipo_usuario);
+            $("#txtSexo").val(objPersonasJSon.sexo);
             $("#typeAction").val("update_personas");
-            $("#myModalFormulario").modal();
+            swal("Confirmacion", "Los datos de la persona fueron cargados correctamente", "success");
         },
         type: 'POST'
     });
@@ -224,37 +209,107 @@ function showPersonasByID() {
 //*****************************************************************
 //*****************************************************************
 
-function deletePersonasByID() {
+function deletePersonasByID(PK_cedula) {
     //Se envia la información por ajax
     $.ajax({
         url: '../backend/agenda/controller/personasController.php',
         data: {
             action: "delete_personas",
-            Usuario: $("#txtUsuario").val()
+            Usuario: PK_cedula
         },
         error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las personas en la base de datos");
+            swal("Error", "Se presento un error al eliminar la informacion", "error");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             var responseText = data.substring(2);
             var typeOfMessage = data.substring(0, 2);
             if (typeOfMessage === "M~") { //si todo esta corecto
-                mostrarModal("myModal", "Resultado de la acción", responseText);
-                showALLPersonas(false);
+                swal("Confirmacion", responseText, "success");
+                clearFormPersonas();
+                $("#dt_personas").DataTable().ajax.reload();
             } else {//existe un error
-                mostrarModal("myModal", "Error", responseText);
+                swal("Error", responseText, "error");
             }
         },
         type: 'POST'
     });
 }
 
-function mostrarModal(idDiv, titulo, mensaje) {
-    $("#" + idDiv + "Title").html(titulo);
-    $("#" + idDiv + "Message").html(mensaje);
-    $("#" + idDiv).modal();
+function cargarTablas() {
+
+    var dataTablePersonas_const = function () {
+        if ($("#dt_personas").length) {
+            $("#dt_personas").DataTable({
+                dom: "Bfrtip",
+                bFilter: true,
+                ordering: false,
+                buttons: [
+                    {
+                        extend: "copy",
+                        className: "btn-sm",
+                        text: "Copiar"
+                    },
+                    {
+                        extend: "csv",
+                        className: "btn-sm",
+                        text: "Exportar a CSV"
+                    },
+                    {
+                        extend: "print",
+                        className: "btn-sm",
+                        text: "Imprimir"
+                    }
+
+                ],
+                "columnDefs": [
+                    {
+                        targets: 12,
+                        className: "dt-center",
+                        render: function (data, type, row, meta) {
+                            var botones = '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="showPersonasByID(\''+row[0]+'\');">Cargar</button> ';
+                            botones += '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="deletePersonasByID(\''+row[0]+'\');">Eliminar</button>';
+                            return botones;
+                        }
+                    }
+
+                ],
+                pageLength: 2,
+                language: dt_lenguaje_espanol,
+                ajax: {
+                    url: '../backend/agenda/controller/personasController.php',
+                    type: "POST",
+                    data: function (d) {
+                        return $.extend({}, d, {
+                            action: "showAll_personas"
+                        });
+                    }
+                },
+                drawCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                    $('#dt_personas').DataTable().columns.adjust().responsive.recalc();
+                }
+            });
+        }
+    };
+
+
+
+    TableManageButtons = function () {
+        "use strict";
+        return {
+            init: function () {
+                dataTablePersonas_const();
+                $(".dataTables_filter input").addClass("form-control input-rounded ml-sm");
+            }
+        };
+    }();
+
+    TableManageButtons.init();
 }
 
-function ocultarModal(idDiv) {
-    $("#" + idDiv).modal("hide");
-}
+//*******************************************************************************
+//evento que reajusta la tabla en el tamaño de la pantall
+//*******************************************************************************
+
+window.onresize = function () {
+    $('#dt_personas').DataTable().columns.adjust().responsive.recalc();
+};

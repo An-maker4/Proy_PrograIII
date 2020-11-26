@@ -85,6 +85,23 @@ if (filter_input(INPUT_POST, 'action') != null) {
                 echo('M~Registro Fue Eliminado Correctamente');
             }
         }
+        
+        //***********************************************************
+        //***********************************************************
+
+        
+        if ($action === "into_personas") {//accion de mostrar cliente por ID
+            //se valida que los parametros hayan sido enviados por post
+            if (filter_input(INPUT_POST, 'Usuario') != null) {
+                $myPersonas->setUsuario(filter_input(INPUT_POST, 'Usuario'));
+                $myPersonas = $myPersonasBo->IntoById($myPersonas);
+                if ($myPersonas != null) {
+                    echo json_encode(($myPersonas));
+                } else {
+                    echo('E~NO Existe un usuario con el ID especificado');
+                }
+            }
+        }
 
         //***********************************************************
         //se captura cualquier error generado

@@ -19,13 +19,32 @@
         <link rel="stylesheet" type="text/css" href="css/datepicker.css"/>
         <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
         <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
-        <link rel="stylesheet" href="css/templatemo-style-registro-admin.css">                
+        <link rel="stylesheet" href="css/templatemo-style-registro-admin.css"> 
         
-        <script src="lib/jquery/dist/jquery.min.js" type="text/javascript"></script>
-        <script type="text/javascript" src="js/usuariosFunctions.js"></script>
         
-        <script src="lib/sweetAlert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
+        <!-- common css. required for every page-->
+        
+        
+        
+        <link href="lib/animate.css/animate.min.css" rel="stylesheet" type="text/css"/>
+        
+        <!-- Page scripts -->
+        <!-- Datatables -->
+        
+        
+        
+        <link href="lib/dataTableFull/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="lib/dataTableFull/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+        <link href="lib/dataTableFull/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+        <link href="lib/dataTableFull/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+        <link href="lib/dataTableFull/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+        <link href="lib/dataTableFull/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+        
+       
         <link href="lib/sweetAlert2/dist/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
+        
+        
+        
         
     </head>
     
@@ -132,7 +151,7 @@
                             
                             <div class="row tm-banner-row" id="tm-section-search">
 
-                                <form role="form" onsubmit="return false;" id="formPersonas" class="tm-search-form tm-section-pad-2">
+                                <form class="tm-search-form tm-section-pad-2" role="form" onsubmit="return false;" id="formPersonas" action="../backend/agenda/controller/personasController.php">
                                     
                                     <div class="form-row tm-search-form-row"> 
                                         
@@ -144,7 +163,7 @@
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">
                                             <label>Contrasena</label>
-                                                <input type="text" id="txtContrasena" class="form-control" placeholder="Contraseña" />
+                                            <input type="password" id="txtContrasena" class="form-control" placeholder="Contraseña" />
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
                                             <label>Nombre</label>
@@ -180,7 +199,7 @@
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2"> 
                                             <label for="inputCheckIn">Fecha de nacimiento</label> 
-                                            <input type="text" class="form-control" id="txtFecha" placeholder="Fri Oct 16 2020">
+                                            <input type="text" class="form-control" id="txtFecha" placeholder="2020-12-12">
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">        
                                             <label>Tipo Usuario</label>
@@ -199,15 +218,7 @@
                                         
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-4">
                                             <button type="reset" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="cancelar">Cancelar</button>
-                                        </div>
-                                        
-                                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-4">
-                                            <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="buscar">Buscar</button>
-                                        </div>
-                                        
-                                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-4">
-                                            <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="borrar">Borrar</button>
-                                        </div>
+                                        </div>                                       
                                         
                                         <!-- Botones: F -->
                                         
@@ -245,12 +256,31 @@
                 
                     <div class="row">
                         <div class="col-md-12">
-                            <div id="divResult" style="text-align:center;">Resultado de la consulta</div>
+                            <table id="dt_personas"  class="table  table-hover dt-responsive nowrap" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>USUARIO</th>
+                                        <th>NUMERO</th>
+                                        <th>NOMBRE</th>
+                                        <th>APELLIDO1</th>
+                                        <th>APELLIDO2</th>
+                                        <th>CORREO</th>
+                                        <th>FEC. NACIMIENTO</th>
+                                        <th>DIRECCION</th>
+                                        <th>TEL1</th>
+                                        <th>TEL2</th>
+                                        <th>TIP</th>
+                                        <th>SEXO</th>
+                                        <th>ACCION</th>
+                                    </tr>
+                                </thead>
+                            </table>
                         </div>
                     </div>
                 
                 <!-- Datos: F -->
                  
+                <br><br><br><br>
                 </section>
                
                 <!-- Tabla: F -->
@@ -293,6 +323,30 @@
         });
 
     </script> 
+    
+    
+        
+        
+        <!-- Page scripts -->
+        <!-- Datatables -->
+        <script src="lib/dataTableFull/datatables/media/js/jquery.dataTables.js"></script>
+        <script src="lib/dataTableFull/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-buttons/js/buttons.flash.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-buttons/js/buttons.html5.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-buttons/js/buttons.print.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+        
+        <script src="lib/sweetAlert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript" src="js/usuariosFunctions.js"></script>
+    
+    
+    
     
     <!-- Documentos JS: F  -->
 

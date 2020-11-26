@@ -67,6 +67,15 @@ class PersonasBo {
             throw $e;
         }
     }
+    
+    //consulta a la base de datos
+    public function IntoById(Personas $personas) {
+        try {
+            return $this->personasDao->IntoById($personas);
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
 
 }
 

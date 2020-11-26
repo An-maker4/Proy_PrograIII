@@ -525,6 +525,16 @@ label { font-weight: 700; padding-top: 15px;}
 
 .tm-recommended-price-box:hover { background-color: #2d688a; }
 
+.tm-recommended-price-btn { 
+    width: 120px;
+    height: 50px;
+    color: white;
+    background-color: #17a2b8;
+    border:inherit;
+}
+
+.tm-recommended-price-btn:hover { color: white; border: inherit; background-color: #2d688a; }
+
 .tm-recommended-price {
     color: white;
     font-size: 1.6rem;

@@ -22,10 +22,7 @@ http://www.templatemo.com/tm-511-journey
         <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
         <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
         <link rel="stylesheet" href="css/templatemo-style-Ingreso.css">                                   <!-- Templatemo style -->
-        <script src="lib/jquery/dist/jquery.min.js" type="text/javascript"></script>
-        <script type="text/javascript" src="js/IngresoFunctions.js"></script>
-        
-        <script src="lib/sweetAlert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
+
         <link href="lib/sweetAlert2/dist/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
         
       </head>
@@ -105,9 +102,9 @@ http://www.templatemo.com/tm-511-journey
                                                 <input type="text" id="txtUsuario" class="form-control" placeholder="Usuario" />
                                             <label>Contrasena</label>
                                                 <input type="password" id="txtContrasena" class="form-control" placeholder="Contraseña" />
-                                            <input type="hidden" id="typeAction" value="show_personas" />
+                                            <input type="hidden" id="typeAction" value="into_personas" />
                                             <input type="hidden" value="" id="idTarea"/>
-                                            <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="enviar">Ingreso</button>
+                                            <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="ingreso">Ingreso</button>
                                             <a href="Registro.php" class="text-uppercase btn-primary tm-btn">Nueva cuenta</a>
                                         </div>
                                     </div>                              
@@ -162,6 +159,9 @@ http://www.templatemo.com/tm-511-journey
         });
 
     </script> 
+    <script src="lib/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/ingresosFunctions.js"></script>
+    <script src="lib/sweetAlert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
 </body>
 </html>
 

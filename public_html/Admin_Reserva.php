@@ -91,7 +91,7 @@
                                 <div class="form-row tm-search-form-row">                                
                                     <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">
                                         <label for="inputCity">Vuelo</label>
-                                        <input type="text" class="form-control" id="txtVuelo" placeholder="Vuelo a elegir...">
+                                        <input type="text" class="form-control" id="txtVuelo" placeholder="Vuelo a elegir..." readonly>
                                     </div>
                                     <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">
                                         <label for="inputCity">Usuario</label>
@@ -122,7 +122,10 @@
                                 <input type="hidden" name="last_name" value="Nombre Usuario" />
                                 <input type="hidden" name="payer_email" value="usuario@example.com" />
                                 <input type="hidden" name="item_number" value="123456" />
-                                <input type="submit" name="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" value="PAGO"/>
+                                <input type="hidden" name="precio_item" id="precio_item" />
+                                <input type="hidden" name="vuelo_item" id="vuelo_item" />
+                                <input type="hidden" name="bool_item" id="bool_item" value = "true" />
+                                <input type="submit" name="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" value="PAGAR VUELO"/>
                             </form>
                         </div> <!-- row -->
                         <div class="tm-banner-overlay"></div>
@@ -135,9 +138,9 @@
             
         <section>
             <div class="tm-page-wrap mx-auto tm-asientos">
-                <button type="submit" class="btn-asiento1 active" id="1-a">1A</button>
-                <button type="submit" class="btn-asiento2 active" id="1-b">1B</button>
-                <button type="submit" class="btn-asiento3 active" id="1-c">1C</button>
+                <button type="submit" class="btn-asiento1 active" id="1-a">7A</button>
+                <button type="submit" class="btn-asiento2 active" id="1-b">7B</button>
+                <button type="submit" class="btn-asiento3 active" id="1-c">7C</button>
                 <img src="img/airbus-320-seatguru.gif" alt="Asientos" class="img-asiento img-fluid">             
             </div>
         </section>
@@ -184,7 +187,7 @@
                                     </div>
                                     <a href="#" class="tm-recommended-price-box">
                                         <p class="tm-recommended-price">$110</p>
-                                        <p class="tm-recommended-price-link">Seguir leyendo</p>
+                                        <button type="button" class="tm-recommended-price-btn" id="precio1">COMPRAR</button>
                                     </a>                        
                                 </div>
 
@@ -198,7 +201,7 @@
                                     <div id="preload-hover-img"></div>
                                     <a href="#" class="tm-recommended-price-box">
                                         <p class="tm-recommended-price">$120</p>
-                                        <p class="tm-recommended-price-link">Seguir leyendo</p>
+                                        <button type="button" class="tm-recommended-price-btn" id="precio2">COMPRAR</button>
                                     </a>
                                 </div>      
                             </div>                        
@@ -219,7 +222,7 @@
                                     </div>
                                     <a href="#" class="tm-recommended-price-box">
                                         <p class="tm-recommended-price">$220</p>
-                                        <p class="tm-recommended-price-link">Seguir leyendo</p>
+                                        <button type="button" class="tm-recommended-price-btn" id="precio3">COMPRAR</button>
                                     </a>                        
                                 </div>
 
@@ -232,7 +235,7 @@
                                     </div>
                                     <a href="#" class="tm-recommended-price-box">
                                         <p class="tm-recommended-price">$230</p>
-                                        <p class="tm-recommended-price-link">Seguir leyendo</p>
+                                        <button type="button" class="tm-recommended-price-btn" id="precio4">COMPRAR</button>
                                     </a>
                                 </div>  
                             </div>
@@ -253,7 +256,7 @@
                                     </div>
                                     <a href="#" class="tm-recommended-price-box">
                                         <p class="tm-recommended-price">$330</p>
-                                        <p class="tm-recommended-price-link">Seguir leyendo</p>
+                                        <button type="button" class="tm-recommended-price-btn" id="precio5">COMPRAR</button>
                                     </a>                        
                                 </div>
 
@@ -266,7 +269,7 @@
                                     </div>
                                     <a href="#" class="tm-recommended-price-box">
                                         <p class="tm-recommended-price">$340</p>
-                                        <p class="tm-recommended-price-link">Seguir leyendo</p>
+                                        <button type="button" class="tm-recommended-price-btn" id="precio6">COMPRAR</button>
                                     </a>
                                 </div> 
                             </div>
@@ -287,7 +290,7 @@
                                     </div>
                                     <a href="#" class="tm-recommended-price-box">
                                         <p class="tm-recommended-price">$440</p>
-                                        <p class="tm-recommended-price-link">Seguir leyendo</p>
+                                        <button type="button" class="tm-recommended-price-btn" id="precio7">COMPRAR</button>
                                     </a>                        
                                 </div>
 
@@ -301,7 +304,7 @@
                                     <div id="preload-hover-img"></div>
                                     <a href="#" class="tm-recommended-price-box">
                                         <p class="tm-recommended-price">$450</p>
-                                        <p class="tm-recommended-price-link">Seguir leyendo</p>
+                                        <button type="button" class="tm-recommended-price-btn" id="precio8">COMPRAR</button>
                                     </a>
                                 </div>  
                             </div>

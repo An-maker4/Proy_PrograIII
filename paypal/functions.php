@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Verify transaction is authentic
+ * Veryfica la autenticidad de la trasaccion
  *
  * @param array $data Post data from Paypal
  * @return bool True if the transaction is verified by PayPal
@@ -39,7 +39,7 @@ function verifyTransaction($data) {
 
 	$info = curl_getinfo($ch);
 
-	// Check the http response
+	// Pregunta por la respuesta http
 	$httpCode = $info['http_code'];
 	if ($httpCode != 200) {
 		throw new Exception("PayPal responded with http code $httpCode");
@@ -51,7 +51,7 @@ function verifyTransaction($data) {
 }
 
 /**
- * Check we've not already processed a transaction
+ * Vrifica si el proceso de transaccion aun no esta listo
  *
  * @param string $txnid Transaction ID
  * @return bool True if the transaction ID has not been seen before, false if already processed
@@ -66,7 +66,7 @@ function checkTxnid($txnid) {
 }
 
 /**
- * Add payment to database
+ * adjunta el pago a la base de datos 
  *
  * @param array $data Payment data
  * @return int|bool ID of new payment or false if failed
