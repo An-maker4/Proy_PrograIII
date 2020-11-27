@@ -63,11 +63,11 @@ class Vuelos extends BaseDomain implements \JsonSerializable{
     /****************************************************************************/
 
     public function getAvion() {
-        return $this->apellido1;
+        return $this->avion;
     }
 
     public function setAvion($avion) {
-        $this->apellido1 = $avion;
+        $this->avion = $avion;
     }
 
 

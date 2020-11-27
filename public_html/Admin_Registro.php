@@ -325,8 +325,7 @@
     </script> 
     
     
-        
-        
+            
         <!-- Page scripts -->
         <!-- Datatables -->
         <script src="lib/dataTableFull/datatables/media/js/jquery.dataTables.js"></script>
@@ -344,10 +343,7 @@
         <script src="lib/sweetAlert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
         
         <script type="text/javascript" src="js/usuariosFunctions.js"></script>
-    
-    
-    
-    
+ 
     <!-- Documentos JS: F  -->
 
     </body>
