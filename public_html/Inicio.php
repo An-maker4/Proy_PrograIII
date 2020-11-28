@@ -70,6 +70,7 @@
                                         <a class="nav-link" href="Ingreso.php">Ingresar</a>
                                     </li>
                                 </ul>
+                                
                             <!-- Menu: F -->
                                 
                             </div>

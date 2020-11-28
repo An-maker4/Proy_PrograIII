@@ -12,39 +12,23 @@
 
         <title>AeroVida-Admin usuarios</title>
         <link rel="shortcut icon" href="img/iconologo.png">
-
+              
+        <!-- CCS-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand">  
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">                
         <link rel="stylesheet" href="css/bootstrap.min.css">                                      
         <link rel="stylesheet" type="text/css" href="css/datepicker.css"/>
         <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
         <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
-        <link rel="stylesheet" href="css/templatemo-style-registro-admin.css"> 
-        
-        
-        <!-- common css. required for every page-->
-        
-        
-        
-        <link href="lib/animate.css/animate.min.css" rel="stylesheet" type="text/css"/>
-        
-        <!-- Page scripts -->
-        <!-- Datatables -->
-        
-        
-        
+        <link rel="stylesheet" href="css/templatemo-style-registro-admin.css">         
+        <link href="lib/animate.css/animate.min.css" rel="stylesheet" type="text/css"/>   
         <link href="lib/dataTableFull/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="lib/dataTableFull/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
         <link href="lib/dataTableFull/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
         <link href="lib/dataTableFull/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
         <link href="lib/dataTableFull/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
         <link href="lib/dataTableFull/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
-        
-       
         <link href="lib/sweetAlert2/dist/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
-        
-        
-        
         
     </head>
     
@@ -323,8 +307,6 @@
         });
 
     </script> 
-    
-    
             
         <!-- Page scripts -->
         <!-- Datatables -->

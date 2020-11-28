@@ -276,6 +276,7 @@
     </script> 
     
     <!-- Page scripts -->
+    
         <!-- Datatables -->
         <script src="lib/dataTableFull/datatables/media/js/jquery.dataTables.js"></script>
         <script src="lib/dataTableFull/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
