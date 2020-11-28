@@ -1,6 +1,31 @@
 //*****************************************************************
 //Inyección de eventos en el HTML
 //*****************************************************************
+var dt_lenguaje_espanol = {
+    decimal:        "",
+    emptyTable:     "No existe información",
+    info:           "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
+    infoEmpty:      "Mostrando 0 a 0 de 0 registros",
+    infoFiltered:   "(filtered from _MAX_ total entries)",
+    infoPostFix:    "",
+    thousands:      ",",
+    lengthMenu:     "Mostrar _MENU_ registros por página",
+    loadingRecords: "Cargando, por favor espere...",
+    processing:     "Procesando...",
+    search:         "Buscar ",
+    zeroRecords:    "No se encontraron registros que cumplan con el criterio",
+    paginate: {
+        first:      "Primero",
+        last:       "Último",
+        next:       "Siguiente",
+        previous:   "Anterior"
+    }
+};
+
+
+////*****************************************************************
+//Inyección de eventos en el HTML
+//*****************************************************************
 
 $(function () { //para la creación de los controles
     //agrega los eventos las capas necesarias
@@ -40,7 +65,7 @@ function addOrUpdateVuelos() {
     //Se envia la información por ajax
     if (validar()) {
         $.ajax({
-            url: '../backend/controller/vuelosController.php',
+            url: '../backend/agenda/controller/vuelosController.php',
             data: {
                 action:                           $("#typeAction").val(),
                 id_Vuelo:                         $("#txtVuelo").val(),
@@ -120,23 +145,23 @@ function cancelAction() {
 //*****************************************************************
 //*****************************************************************
 
-function showVuelosByID() {
+function showVuelosByID(PK_vuelo) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/controller/vuelosController.php',
+        url: '../backend/agenda/controller/vuelosController.php',
         data: {
             action: "show_vuelos",
-            id_Vuelo: $("#txtVuelos").val()
+            id_Vuelo: PK_vuelo
         },
         error: function () { //si existe un error en la respuesta del ajax
             swal("Error", "Se presento un error al consultar la informacion", "error");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             var objVuelosJSon = JSON.parse(data);
-            $("#txtVuelo").val(objVuelosJSon.id_Vuelo);
-            $("#txtFecha").val(objVuelosJSon.Fecha_Hora);
-            $("#txtRuta").val(objVuelosJSon.Ruta_idRuta);
-            $("#txtTipoAvion").val(objVuelosJSon.Tipo_Avion_idTipo_Avion);
+            $("#txtVuelo").val(objVuelosJSon.id_vuelo);
+            $("#txtFecha").val(objVuelosJSon.fecha_hora);
+            $("#txtRuta").val(objVuelosJSon.ruta);
+            $("#txtAvion").val(objVuelosJSon.avion);
             $("#typeAction").val("update_vuelos");
             $("#myModalFormulario").modal();
             
@@ -149,13 +174,13 @@ function showVuelosByID() {
 //*****************************************************************
 //*****************************************************************
 
-function deleteVuelosByID() {
+function deleteVuelosByID(PK_vuelo) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/controller/vuelosController.php',
+        url: '../backend/agenda/controller/vuelosController.php',
         data: {
             action: "delete_vuelos",
-            id_Vuelo: $("#txtVuelo").val()
+            id_Vuelo: PK_vuelo
         },
         error: function () { //si existe un error en la respuesta del ajax
             swal("Error", "Se presento un error al eliminar la informacion", "error");
@@ -185,8 +210,6 @@ function deleteVuelosByID() {
 
 function cargarTablas() {
 
-
-
     var dataTableVuelos_const = function () {
         if ($("#dt_vuelos").length) {
             $("#dt_vuelos").DataTable({
@@ -213,7 +236,7 @@ function cargarTablas() {
                 ],
                 "columnDefs": [
                     {
-                        targets: 6,
+                        targets: 4,
                         className: "dt-center",
                         render: function (data, type, row, meta) {
                             var botones = '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="showVuelosByID(\''+row[0]+'\');">Cargar</button> ';
@@ -226,7 +249,7 @@ function cargarTablas() {
                 pageLength: 1,
                 language: dt_lenguaje_espanol,
                 ajax: {
-                    url: '../backend/controller/vuelosController.php',
+                    url: '../backend/agenda/controller/vuelosController.php',
                     type: "POST",
                     data: function (d) {
                         return $.extend({}, d, {

@@ -21,12 +21,26 @@
         <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
         <link rel="stylesheet" href="css/templatemo-style-vuelo-admin.css">                
         
-        <script src="lib/jquery/dist/jquery.min.js" type="text/javascript"></script>
-        <script type="text/javascript" src="js/vuelosFunctions.js"></script>
+        <!-- common css. required for every page-->
         
-        <script src="lib/sweetAlert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
+        
+        
+        <link href="lib/animate.css/animate.min.css" rel="stylesheet" type="text/css"/>
+        
+        <!-- Page scripts -->
+        <!-- Datatables -->
+        
+        
+        
+        <link href="lib/dataTableFull/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="lib/dataTableFull/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+        <link href="lib/dataTableFull/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+        <link href="lib/dataTableFull/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+        <link href="lib/dataTableFull/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+        <link href="lib/dataTableFull/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+        
+       
         <link href="lib/sweetAlert2/dist/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
-        
     </head>
     
     <!-- Cargas: F -->
@@ -164,15 +178,7 @@
                                             
                                             <div class="form-group tm-form-group tm-form-group-pad tm-form-group-4">
                                                 <button type="reset" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="cancelar">Cancelar</button>
-                                            </div>
-                                            
-                                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-4">
-                                                <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="buscar">Buscar</button>
-                                            </div>
-                                            
-                                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-4">
-                                                <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="borrar">Borrar</button>
-                                            </div>
+                                            </div>                                           
                                             
                                             <!-- Botones: F --> 
                                                                                   
@@ -205,12 +211,26 @@
                 <!-- encanbezado: F -->
                 
                 <!-- Datos: I -->
+                
                     <div class="row">
                         <div class="col-md-12">
-                            <div id="divResult" style="text-align:center;">Resultado de la consulta</div>
+                            <table id="dt_vuelos"  class="table  table-hover dt-responsive nowrap" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>VUELO</th>
+                                        <th>FECHA</th>
+                                        <th>RUTA</th>
+                                        <th>AVION</th>
+                                        <th>ACCION</th>
+                                    </tr>
+                                </thead>
+                            </table>
                         </div>
                     </div>
+                
                 <!-- Datos: F -->
+                 
+                <br><br><br><br>
                 
                 </section>
                 
@@ -254,6 +274,24 @@
         });
 
     </script> 
+    
+    <!-- Page scripts -->
+        <!-- Datatables -->
+        <script src="lib/dataTableFull/datatables/media/js/jquery.dataTables.js"></script>
+        <script src="lib/dataTableFull/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-buttons/js/buttons.flash.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-buttons/js/buttons.html5.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-buttons/js/buttons.print.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+        
+        <script src="lib/sweetAlert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript" src="js/vuelosFunctions.js"></script>
     
     <!-- Documentos JS: F  -->
 
