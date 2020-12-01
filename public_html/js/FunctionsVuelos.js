@@ -83,6 +83,7 @@ function addOrUpdateVuelos() {
                 if (typeOfMessage === "M~") { //si todo esta corecto
                     swal("Confirmacion", responseText, "success");
                     clearFormVuelos();
+                    $("#typeAction").val("add_vuelos");
                     $("#dt_vuelos").DataTable().ajax.reload();
                 } else {//existe un error
                     swal("Error", responseText, "error");

@@ -288,7 +288,7 @@
                                     <div class="tm-recommended-description-box">
                                         <h3 class="tm-recommended-title">Nueva York</h3>
                                         <p class="tm-text-highlight">Estados Unidos</p>
-                                        <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>   
+                                        <p class="tm-text-gray">Vuelo de San Jose a Nueva York para 2020-12-22 a las 04:35:00 su duracion de llega es de 01:00:00.</p>   
                                     </div>
                                     <a href="#" class="tm-recommended-price-box" id="precio1">
                                         <p class="tm-recommended-price">$110</p>
@@ -301,7 +301,7 @@
                                     <div class="tm-recommended-description-box">
                                         <h3 class="tm-recommended-title">Toronto</h3>
                                         <p class="tm-text-highlight">Canada</p>
-                                        <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>   
+                                        <p class="tm-text-gray">Vuelo de San Jose a Toronto para 2021-03-01 a la 01:00:00 su duracion de llega es de 04:20:00.</p>   
                                     </div>
                                     <div id="preload-hover-img"></div>
                                     <a href="#" class="tm-recommended-price-box" id="precio2">
@@ -323,7 +323,7 @@
                                     <div class="tm-recommended-description-box">
                                         <h3 class="tm-recommended-title">Santa Martha</h3>
                                         <p class="tm-text-highlight">Colombia</p>
-                                        <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>   
+                                        <p class="tm-text-gray">Vuelo de San Jose a Santa Martha para 2021-01-24 a las 15:30:00 su duracion de llega es de 03:25:00.</p>   
                                     </div>
                                     <a href="#" class="tm-recommended-price-box" id="precio3">
                                         <p class="tm-recommended-price">$220</p>
@@ -336,7 +336,7 @@
                                     <div class="tm-recommended-description-box">
                                         <h3 class="tm-recommended-title">Santiago</h3>
                                         <p class="tm-text-highlight">Chile</p>
-                                        <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>   
+                                        <p class="tm-text-gray">Vuelo de San Jose a Santa Martha para 2021-02-15a las 17:25:00 su duracion de llega es de 04:25:00.</p>   
                                     </div>
                                     <a href="#" class="tm-recommended-price-box" id="precio4">
                                         <p class="tm-recommended-price">$230</p>
@@ -356,8 +356,8 @@
                                     <img src="img/tm-img-02.jpg" alt="Image" class="img-fluid tm-recommended-img">
                                     <div class="tm-recommended-description-box">
                                         <h3 class="tm-recommended-title">Venecia</h3>
-                                        <p class="tm-text-highlight">Italy</p>
-                                        <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>   
+                                        <p class="tm-text-highlight">Italia</p>
+                                        <p class="tm-text-gray">Vuelo de San Jose a Venecia para 2021-02-24 a las 23:05:00 su duracion de llega es de 04:00:00.</p>   
                                     </div>
                                     <a href="#" class="tm-recommended-price-box" id="precio5">
                                         <p class="tm-recommended-price">$330</p>
@@ -369,8 +369,8 @@
                                     <img src="img/tm-img-01.jpg" alt="Image" class="img-fluid tm-recommended-img">
                                     <div class="tm-recommended-description-box">
                                         <h3 class="tm-recommended-title">Paris</h3>
-                                        <p class="tm-text-highlight">France</p>
-                                        <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>   
+                                        <p class="tm-text-highlight">Francia</p>
+                                        <p class="tm-text-gray">Vuelo de San Jose a Paris para 2021-03-14 a las 14:17:00 su duracion de llega es de 03:30:00.</p>   
                                     </div>
                                     <a href="#" class="tm-recommended-price-box" id="precio6">
                                         <p class="tm-recommended-price">$340</p>
@@ -391,7 +391,7 @@
                                     <div class="tm-recommended-description-box">
                                         <h3 class="tm-recommended-title">Singapore</h3>
                                         <p class="tm-text-highlight">China</p>
-                                        <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>   
+                                        <p class="tm-text-gray">Vuelo de San Jose a Sigapore para 2021-01-05 a las 17:19:00 su duracion de llega es de 	05:40:00.</p>   
                                     </div>
                                     <a href="#" class="tm-recommended-price-box" id="precio7">
                                         <p class="tm-recommended-price">$440</p>
@@ -404,7 +404,7 @@
                                     <div class="tm-recommended-description-box">
                                         <h3 class="tm-recommended-title">Seul</h3>
                                         <p class="tm-text-highlight">Corea del sur</p>
-                                        <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>   
+                                        <p class="tm-text-gray">Vuelo de San Jose a Seul para 2021-05-05 a las 02:35:00 su duracion de llega es de 06:17:00.</p>   
                                     </div>
                                     <div id="preload-hover-img"></div>
                                     <a href="#" class="tm-recommended-price-box" id="precio8">

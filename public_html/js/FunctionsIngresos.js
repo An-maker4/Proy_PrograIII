@@ -20,7 +20,7 @@ function IntoPersonasByID() {
             var objPersonasJSon = JSON.parse(data);
             if($("#txtUsuarioI").val() === objPersonasJSon.usuario && $("#txtContrasena").val() === objPersonasJSon.contrasena && "1" === objPersonasJSon.tipo_usuario){ 
                 swal("Confirmacion", "Acceso confirmado Cliente", "success");                
-                location.href="Admin_Reserva.php";
+                location.href="Reserva.php";
             }else if($("#txtUsuarioI").val() === objPersonasJSon.usuario && $("#txtContrasena").val() === objPersonasJSon.contrasena && "2" === objPersonasJSon.tipo_usuario){           
                 swal("Confirmacion", "Acceso confirmado Admin", "success"); 
                 location.href="Admin_Registro.php";
