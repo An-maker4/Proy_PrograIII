@@ -143,7 +143,7 @@
                                             <!-- Espacios: I --> 
                                             
                                             <label>Usuario</label>
-                                                <input type="text" id="txtUsuario" class="form-control" placeholder="Usuario" />
+                                                <input type="text" id="txtUsuarioI" class="form-control" placeholder="Usuario" />
                                             <label>Contrasena</label>
                                                 <input type="password" id="txtContrasena" class="form-control" placeholder="Contraseña" />
                                                 
@@ -191,7 +191,7 @@
                             <div class="col-xs-12 mx-auto tm-about-text-wrap text-center">                        
                                 <h2 class="text-uppercase mb-4">Tu <strong>seguridad y comodidad</strong> es nuestra prioridad</h2>
                                 <p class="mb-4">Estamos en funcion de la seguridad de nuestro clientes y su comodidad tanto en la compra de vuelos como en los viajes. Queremos que la experiencia de nuetros viajeros sea la mas optima. Somos su opcion de confianza.</p>
-                                <a href="Inicio.html#tm-section-3" class="text-uppercase btn-primary tm-btn">Explore los lugares</a>                              
+                                <a href="Inicio.php#tm-section-3" class="text-uppercase btn-primary tm-btn">Explore los lugares</a>                              
                             </div>
                         </div>
                     </div>
@@ -241,7 +241,7 @@
 
     </script> 
     <script src="lib/jquery/dist/jquery.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="js/ingresosFunctions.js"></script>
+    <script type="text/javascript" src="js/FunctionsIngresos.js"></script>
     <script src="lib/sweetAlert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
     
     </body>

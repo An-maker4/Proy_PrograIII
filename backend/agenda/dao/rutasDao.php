@@ -81,7 +81,8 @@ class RutasDao {
                             where idRuta = %s",
                     $this->labAdodb->Param("Trayecto"),
                     $this->labAdodb->Param("Duracion"),
-                    $this->labAdodb->Param("Precio"));
+                    $this->labAdodb->Param("Precio"),
+                    $this->labAdodb->Param("idRuta"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
@@ -89,7 +90,7 @@ class RutasDao {
             $valores["Trayecto"]        = $ruta->getTrayecto();
             $valores["Duracion"]        = $ruta->getDuracion();
             $valores["Precio"]          = $ruta->getPrecio();
-            $valores["idRuta"]          = $ruta->getidRuta();
+            $valores["idRuta"]          = $ruta->getIdRutas();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
             throw new Exception('No se pudo actualizar el registro (Error generado en el metodo update de la clase RutaDao), error:'.$e->getMessage());
@@ -126,7 +127,7 @@ class RutasDao {
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
-            $valores["idRuta"] = $ruta->getidRuta();
+            $valores["idRuta"] = $ruta->getIdRutas();
             $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
             
             if ($resultSql->RecordCount() > 0) {

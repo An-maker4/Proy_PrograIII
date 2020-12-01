@@ -83,7 +83,8 @@ class ReservasDao {
                     $this->labAdodb->Param("Numero_Fila"),
                     $this->labAdodb->Param("Numero_Asiento"),
                     $this->labAdodb->Param("Vuelo_id_Vuelo"),
-                    $this->labAdodb->Param("Persona_Usuario1"));
+                    $this->labAdodb->Param("Persona_Usuario1"),
+                    $this->labAdodb->Param("idReservacion"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
@@ -130,7 +131,7 @@ class ReservasDao {
 
             $valores = array();
 
-            $valores["idReservacion"] = $resevas->getUsuario();
+            $valores["idReservacion"] = $resevas->getIdReserva();
 
             $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
             

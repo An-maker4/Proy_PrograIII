@@ -1,11 +1,35 @@
 //*****************************************************************
 //Inyección de eventos en el HTML
 //*****************************************************************
+var dt_lenguaje_espanol = {
+    decimal:        "",
+    emptyTable:     "No existe información",
+    info:           "Mostrando del _START_ al _END_ de un total de _TOTAL_ registros",
+    infoEmpty:      "Mostrando 0 a 0 de 0 registros",
+    infoFiltered:   "(filtered from _MAX_ total entries)",
+    infoPostFix:    "",
+    thousands:      ",",
+    lengthMenu:     "Mostrar _MENU_ registros por página",
+    loadingRecords: "Cargando, por favor espere...",
+    processing:     "Procesando...",
+    search:         "Buscar ",
+    zeroRecords:    "No se encontraron registros que cumplan con el criterio",
+    paginate: {
+        first:      "Primero",
+        last:       "Último",
+        next:       "Siguiente",
+        previous:   "Anterior"
+    }
+};
+
+//*****************************************************************
+//Inyección de eventos en el HTML
+//*****************************************************************
 
 $(function () { //para la creación de los controles
     //agrega los eventos las capas necesarias
     $("#enviar").click(function () {
-        addOrUpdateRutas();
+        addOrUpdateReservas();
     });
     //agrega los eventos las capas necesarias
     $("#cancelar").click(function () {
@@ -14,13 +38,10 @@ $(function () { //para la creación de los controles
 
     $("#btMostarForm").click(function () {
         //muestra el fomurlaior
-        clearFormRutas();
-        $("#typeAction").val("add_rutas");
+        clearFormReservas();
+        $("#typeAction").val("add_reservas");
         $("#myModalFormulario").modal();
     });
-    
-    
-    
 });
 
 //*********************************************************************
@@ -36,17 +57,18 @@ $(document).ready(function () {
 //Agregar o modificar la información
 //*********************************************************************
 
-function addOrUpdateRutas() {
+function addOrUpdateReservas() {
     //Se envia la información por ajax
     if (validar()) {
         $.ajax({
-            url: '../backend/controller/rutasController.php',
+            url: '../backend/agenda/controller/reservasController.php',
             data: {
-                action:               $("#typeAction").val(),
-                idRuta:               $("#txtRuta").val(),
-                Trayecto:             $("#txtTrayecto").val(),
-                Duracion:             $("#txtDuracion").val(),
-                Precio:               $("#txtPrecio").val()
+                action:             $("#typeAction").val(),
+                idReservacion:      $("#txtReserva").val(),
+                Numero_Fila:        $("#txtFila").val(),
+                Numero_Asiento:     $("#txtAsiento").val(),
+                Vuelo_id_Vuelo:     $("#txtVuelo").val(),
+                Persona_Usuario1:   $("#txtUsuario").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal("Error", "Se presento un error al enviar la informacion", "error");
@@ -57,8 +79,8 @@ function addOrUpdateRutas() {
                 var typeOfMessage = messageComplete.substring(0, 2);
                 if (typeOfMessage === "M~") { //si todo esta corecto
                     swal("Confirmacion", responseText, "success");
-                    clearFormRutas();
-                    $("#dt_rutas").DataTable().ajax.reload();
+                    clearFormReservas();
+                    $("#dt_reserva").DataTable().ajax.reload();
                 } else {//existe un error
                     swal("Error", responseText, "error");
                 }
@@ -78,35 +100,30 @@ function validar() {
     
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados
+    if ($("#txtFila").val() === "") {
+        validacion = false;
+    }
+
+    if ($("#txtAsiento").val() === "") {
+        validacion = false;
+    }
+
+    if ($("#txtVuelo").val() === "") {
+        validacion = false;
+    }
+
     if ($("#txtUsuario").val() === "") {
         validacion = false;
     }
-
-    if ($("#txtidRuta").val() === "") {
-        validacion = false;
-    }
-
-    if ($("#txtTrayecto").val() === "") {
-        validacion = false;
-    }
-
-    if ($("#txtDuracion").val() === "") {
-        validacion = false;
-    }
-
-    if ($("#txtPrecio").val() === "") {
-        validacion = false;
-    }
-
-
+    
     return validacion;
 }
 
 //*****************************************************************
 //*****************************************************************
 
-function clearFormRutas() {
-    $('#formRutas').trigger("reset");
+function clearFormReservas() {
+    $('#formReservas').trigger("reset");
 }
 
 //*****************************************************************
@@ -114,37 +131,36 @@ function clearFormRutas() {
 
 function cancelAction() {
     //clean all fields of the form
-    clearFormRutas();
-    $("#typeAction").val("add_rutas");
+    clearFormReservas();
+    $("#typeAction").val("add_reservas");
     $("#myModalFormulario").modal("hide");
 }
 
-
-
 //*****************************************************************
 //*****************************************************************
 
-function showRutasByID() {
+function showRutasByID(PK_reservas) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/controller/rutasController.php',
+        url: '../backend/agenda/controller/reservasController.php',
         data: {
-            action: "show_rutas",
-            idRuta: $("#txtRuta").val()
+            action: "show_reservas",
+            idReservacion: PK_reservas
         },
         error: function () { //si existe un error en la respuesta del ajax
             swal("Error", "Se presento un error al consultar la informacion", "error");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            var objRutasJSon = JSON.parse(data);
-            $("#txtidRuta").val(objRutasJSon.idRuta);
-            $("#txtTrayecto").val(objRutasJSon.Trayecto);
-            $("#txtDuracion").val(objRutasJSon.Duracion);
-            $("#txtPrecio").val(objRutasJSon.Precio);
-            $("#typeAction").val("update_rutas");
+            var objReservasJSon = JSON.parse(data);
+            $("#txtReserva").val(objReservasJSon.idreserva);
+            $("#txtVuelo").val(objReservasJSon.vuelo);
+            $("#txtUsuario").val(objReservasJSon.usuario);
+            $("#txtFila").val(objReservasJSon.numero_fila);
+            $("#txtAsiento").val(objReservasJSon.numero_asiento);
+            $("#typeAction").val("update_reservas");
             $("#myModalFormulario").modal();
             
-            swal("Confirmacion", "Los datos de la persona fueron cargados correctamente", "success");
+            swal("Confirmacion", "Los datos de la reserva fueron cargados correctamente", "success");
         },
         type: 'POST'
     });
@@ -153,24 +169,24 @@ function showRutasByID() {
 //*****************************************************************
 //*****************************************************************
 
-function deleteRutasByID(PK_cedula) {
+function deletePeservasByID(PK_reservas) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/controller/rutasController.php',
+        url: '../backend/agenda/controller/reservasController.php',
         data: {
-            action: "delete_rutas",
-            idRuta: $("#txtRuta").val()
+            action: "delete_reservas",
+            idReservacion: PK_reservas
         },
         error: function () { //si existe un error en la respuesta del ajax
-            swal("Error", "Se presento un error al eliminar la informacion", "error");
+            alert("Se presento un error a la hora de cargar la información de las personas en la base de datos");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            var responseText = data.trim().substring(2);
-            var typeOfMessage = data.trim().substring(0, 2);
+            var responseText = data.substring(2);
+            var typeOfMessage = data.substring(0, 2);
             if (typeOfMessage === "M~") { //si todo esta corecto
                 swal("Confirmacion", responseText, "success");
-                clearFormRutas();
-                $("#dt_rutas").DataTable().ajax.reload();
+                clearFormReservas();
+                $("#dt_reserva").DataTable().ajax.reload();
             } else {//existe un error
                 swal("Error", responseText, "error");
             }
@@ -178,9 +194,6 @@ function deleteRutasByID(PK_cedula) {
         type: 'POST'
     });
 }
-
-
-
 
 //*******************************************************************************
 //Metodo para cargar las tablas
@@ -192,10 +205,10 @@ function cargarTablas() {
 
 
     var dataTableRutas_const = function () {
-        if ($("#dt_rutas").length) {
-            $("#dt_rutas").DataTable({
+        if ($("#dt_reserva").length) {
+            $("#dt_reserva").DataTable({
                 dom: "Bfrtip",
-                bFilter: false,
+                bFilter: true,
                 ordering: false,
                 buttons: [
                     {
@@ -221,25 +234,25 @@ function cargarTablas() {
                         className: "dt-center",
                         render: function (data, type, row, meta) {
                             var botones = '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="showRutasByID(\''+row[0]+'\');">Cargar</button> ';
-                            botones += '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="deleteRutasByID(\''+row[0]+'\');">Eliminar</button>';
+                            botones += '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="deletePeservasByID(\''+row[0]+'\');">Eliminar</button>';
                             return botones;
                         }
                     }
 
                 ],
-                pageLength: 1,
+                pageLength: 2,
                 language: dt_lenguaje_espanol,
                 ajax: {
-                    url: '../backend/controller/rutasController.php',
+                    url: '../backend/agenda/controller/reservasController.php',
                     type: "POST",
                     data: function (d) {
                         return $.extend({}, d, {
-                            action: "showAll_rutas"
+                            action: "showAll_reservas"
                         });
                     }
                 },
                 drawCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-                    $('#dt_rutas').DataTable().columns.adjust().responsive.recalc();
+                    $('#dt_reserva').DataTable().columns.adjust().responsive.recalc();
                 }
             });
         }
@@ -265,7 +278,6 @@ function cargarTablas() {
 //*******************************************************************************
 
 window.onresize = function () {
-    $('#dt_rutas').DataTable().columns.adjust().responsive.recalc();
+    $('#dt_reserva').DataTable().columns.adjust().responsive.recalc();
 };
-
 

@@ -21,15 +21,6 @@ $(function () { //para la creación de los controles
 });
 
 //*********************************************************************
-//cuando el documento esta cargado se procede a cargar la información
-//*********************************************************************
-
-$(document).ready(function () {
-    showALLReservas(true);
-    
-});
-
-//*********************************************************************
 //Agregar o modificar la información
 //*********************************************************************
 
@@ -130,64 +121,6 @@ function showALLReservas(ocultarModalBool) {
             $("#divResult").html(data);
             // se oculta el modal esta funcion se encuentra en el utils.js
             
-        },
-        type: 'POST'
-    });
-}
-
-//*****************************************************************
-//*****************************************************************
-
-function showPersonasByID(PK_cedula) {
-    //Se envia la información por ajax
-    $.ajax({
-        url: 'admin/reservasController.php',
-        data: {
-            action: "show_reservas",
-            PK_cedula: PK_cedula
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las personas en la base de datos");
-        },
-        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            var objPersonasJSon = JSON.parse(data);
-            $("#txtPK_cedula").val(objPersonasJSon.PK_cedula);
-            $("#txtnombre").val(objPersonasJSon.nombre);
-            $("#txtapellido1").val(objPersonasJSon.apellido1);
-            $("#txtapellido2").val(objPersonasJSon.apellido2);
-            $("#txtfecNacimiento").val(objPersonasJSon.fecNacimiento);
-            $("#txtsexo").val(objPersonasJSon.sexo);
-            $("#txtobservaciones").val(objPersonasJSon.observaciones);
-            $("#typeAction").val("update_personas");
-            $("#myModalFormulario").modal();
-        },
-        type: 'POST'
-    });
-}
-
-//*****************************************************************
-//*****************************************************************
-
-function deletePersonasByID(PK_cedula) {
-    //Se envia la información por ajax
-    $.ajax({
-        url: 'admin/personasController.php',
-        data: {
-            action: "delete_personas",
-            PK_cedula: PK_cedula
-        },
-        error: function () { //si existe un error en la respuesta del ajax
-            alert("Se presento un error a la hora de cargar la información de las personas en la base de datos");
-        },
-        success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            var responseText = data.substring(2);
-            var typeOfMessage = data.substring(0, 2);
-            if (typeOfMessage === "M~") { //si todo esta corecto
-                mostrarModal("myModal", "Resultado de la acción", responseText);
-                showALLPersonas(false);
-            } else {//existe un error
-                mostrarModal("myModal", "Error", responseText);
-            }
         },
         type: 'POST'
     });

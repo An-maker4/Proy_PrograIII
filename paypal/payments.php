@@ -95,5 +95,5 @@ if ($itemBool === "false" ) {
             }
     }
 }else{
-    echo('E~Su intento de transaccion ha sido invalida');
+    echo('E~Su intento de transaccion ha sido invalida. (No se pudo acceder a paypal)');
 }

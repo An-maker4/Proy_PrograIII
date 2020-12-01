@@ -174,7 +174,6 @@ class PersonasDao {
             if ($resultSql->RecordCount() > 0) {
                 $returnPersonas = Personas::createNullPersonas();
                 $returnPersonas->setUsuario($resultSql->Fields("Usuario"));
-                $returnPersonas->setContrasena($resultSql->Fields("Contrasena"));
                 $returnPersonas->setNombre($resultSql->Fields("Nombre"));
                 $returnPersonas->setApellido1($resultSql->Fields("Apellido1"));
                 $returnPersonas->setApellido2($resultSql->Fields("Apellido2"));
@@ -197,7 +196,7 @@ class PersonasDao {
 
         
         try {
-            $sql = sprintf("select * from Persona");
+            $sql = sprintf("select Usuario, Nombre, Apellido1, Apellido2, Correo, Fecha_Nacimiento, Direccion, Telefono1, Telefono2, Tipo_Usuario, Sexo from Persona");
             $resultSql = $this->labAdodb->Execute($sql);
             return $resultSql;
         } catch (Exception $e) {

@@ -22,15 +22,14 @@ var dt_lenguaje_espanol = {
     }
 };
 
-
-////*****************************************************************
+//*****************************************************************
 //Inyección de eventos en el HTML
 //*****************************************************************
 
 $(function () { //para la creación de los controles
     //agrega los eventos las capas necesarias
     $("#enviar").click(function () {
-        addOrUpdateVuelos();
+        addOrUpdateRutas();
     });
     //agrega los eventos las capas necesarias
     $("#cancelar").click(function () {
@@ -39,8 +38,8 @@ $(function () { //para la creación de los controles
 
     $("#btMostarForm").click(function () {
         //muestra el fomurlaior
-        clearFormVuelos();
-        $("#typeAction").val("add_vuelos");
+        clearFormRutas();
+        $("#typeAction").val("add_rutas");
         $("#myModalFormulario").modal();
     });
     
@@ -61,17 +60,17 @@ $(document).ready(function () {
 //Agregar o modificar la información
 //*********************************************************************
 
-function addOrUpdateVuelos() {
+function addOrUpdateRutas() {
     //Se envia la información por ajax
     if (validar()) {
         $.ajax({
-            url: '../backend/agenda/controller/vuelosController.php',
+            url: '../backend/agenda/controller/rutasController.php',
             data: {
-                action:                           $("#typeAction").val(),
-                id_Vuelo:                         $("#txtVuelo").val(),
-                Fecha_Hora:                       $("#txtFecha").val(),
-                Ruta_idRuta:                      $("#txtRuta").val(),
-                Tipo_Avion_idTipo_Avion:          $("#txtAvion").val()
+                action:               $("#typeAction").val(),
+                idRuta:               $("#txtRuta").val(),
+                Trayecto:             $("#txtTrayecto").val(),
+                Duracion:             $("#txtDuracion").val(),
+                Precio:               $("#txtPrecio").val()
             },
             error: function () { //si existe un error en la respuesta del ajax
                 swal("Error", "Se presento un error al enviar la informacion", "error");
@@ -82,8 +81,8 @@ function addOrUpdateVuelos() {
                 var typeOfMessage = messageComplete.substring(0, 2);
                 if (typeOfMessage === "M~") { //si todo esta corecto
                     swal("Confirmacion", responseText, "success");
-                    clearFormVuelos();
-                    $("#dt_vuelos").DataTable().ajax.reload();
+                    clearFormRutas();
+                    $("#dt_rutas").DataTable().ajax.reload();
                 } else {//existe un error
                     swal("Error", responseText, "error");
                 }
@@ -103,19 +102,19 @@ function validar() {
     
     //valida cada uno de los campos del formulario
     //Nota: Solo si fueron digitados
-    if ($("#txtVuelo").val() === "") {
-        validacion = false;
-    }
-
-    if ($("#txtFecha").val() === "") {
-        validacion = false;
-    }
-    
     if ($("#txtRuta").val() === "") {
         validacion = false;
     }
 
-    if ($("#txtAvion").val() === "") {
+    if ($("#txtTrayecto").val() === "") {
+        validacion = false;
+    }
+
+    if ($("#txtDuracion").val() === "") {
+        validacion = false;
+    }
+
+    if ($("#txtPrecio").val() === "") {
         validacion = false;
     }
 
@@ -126,8 +125,8 @@ function validar() {
 //*****************************************************************
 //*****************************************************************
 
-function clearFormVuelos() {
-    $('#formVuelos').trigger("reset");
+function clearFormRutas() {
+    $('#formRuta').trigger("reset");
 }
 
 //*****************************************************************
@@ -135,37 +134,35 @@ function clearFormVuelos() {
 
 function cancelAction() {
     //clean all fields of the form
-    clearFormVuelos();
-    $("#typeAction").val("add_vuelos");
+    clearFormRutas();
+    $("#typeAction").val("add_rutas");
     $("#myModalFormulario").modal("hide");
 }
 
-
-
 //*****************************************************************
 //*****************************************************************
 
-function showVuelosByID(PK_vuelo) {
+function showRutasByID(PK_rutas) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/agenda/controller/vuelosController.php',
+        url: '../backend/agenda/controller/rutasController.php',
         data: {
-            action: "show_vuelos",
-            id_Vuelo: PK_vuelo
+            action: "show_rutas",
+            idRuta: PK_rutas
         },
         error: function () { //si existe un error en la respuesta del ajax
             swal("Error", "Se presento un error al consultar la informacion", "error");
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
-            var objVuelosJSon = JSON.parse(data);
-            $("#txtVuelo").val(objVuelosJSon.id_vuelo);
-            $("#txtFecha").val(objVuelosJSon.fecha_hora);
-            $("#txtRuta").val(objVuelosJSon.ruta);
-            $("#txtAvion").val(objVuelosJSon.avion);
-            $("#typeAction").val("update_vuelos");
+            var objRutasJSon = JSON.parse(data);
+            $("#txtRuta").val(objRutasJSon.idrutas);
+            $("#txtTrayecto").val(objRutasJSon.trayecto);
+            $("#txtDuracion").val(objRutasJSon.duracion);
+            $("#txtPrecio").val(objRutasJSon.precio);
+            $("#typeAction").val("update_rutas");
             $("#myModalFormulario").modal();
             
-            swal("Confirmacion", "Los datos de la vuelos fueron cargados correctamente", "success");
+            swal("Confirmacion", "Los datos de la ruta fueron cargados correctamente", "success");
         },
         type: 'POST'
     });
@@ -174,13 +171,13 @@ function showVuelosByID(PK_vuelo) {
 //*****************************************************************
 //*****************************************************************
 
-function deleteVuelosByID(PK_vuelo) {
+function deleteRutasByID(PK_rutas) {
     //Se envia la información por ajax
     $.ajax({
-        url: '../backend/agenda/controller/vuelosController.php',
+        url: '../backend/agenda/controller/rutasController.php',
         data: {
-            action: "delete_vuelos",
-            id_Vuelo: PK_vuelo
+            action: "delete_rutas",
+            idRuta: PK_rutas
         },
         error: function () { //si existe un error en la respuesta del ajax
             swal("Error", "Se presento un error al eliminar la informacion", "error");
@@ -190,8 +187,8 @@ function deleteVuelosByID(PK_vuelo) {
             var typeOfMessage = data.trim().substring(0, 2);
             if (typeOfMessage === "M~") { //si todo esta corecto
                 swal("Confirmacion", responseText, "success");
-                clearFormVuelos();
-                $("#dt_vuelos").DataTable().ajax.reload();
+                clearFormRutas();
+                $("#dt_rutas").DataTable().ajax.reload();
             } else {//existe un error
                 swal("Error", responseText, "error");
             }
@@ -210,11 +207,13 @@ function deleteVuelosByID(PK_vuelo) {
 
 function cargarTablas() {
 
-    var dataTableVuelos_const = function () {
-        if ($("#dt_vuelos").length) {
-            $("#dt_vuelos").DataTable({
+
+
+    var dataTableRutas_const = function () {
+        if ($("#dt_rutas").length) {
+            $("#dt_rutas").DataTable({
                 dom: "Bfrtip",
-                bFilter: false,
+                bFilter: true,
                 ordering: false,
                 buttons: [
                     {
@@ -239,26 +238,26 @@ function cargarTablas() {
                         targets: 4,
                         className: "dt-center",
                         render: function (data, type, row, meta) {
-                            var botones = '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="showVuelosByID(\''+row[0]+'\');">Cargar</button> ';
-                            botones += '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="deleteVuelosByID(\''+row[0]+'\');">Eliminar</button>';
+                            var botones = '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="showRutasByID(\''+row[0]+'\');">Cargar</button> ';
+                            botones += '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="deleteRutasByID(\''+row[0]+'\');">Eliminar</button>';
                             return botones;
                         }
                     }
 
                 ],
-                pageLength: 1,
+                pageLength: 2,
                 language: dt_lenguaje_espanol,
                 ajax: {
-                    url: '../backend/agenda/controller/vuelosController.php',
+                    url: '../backend/agenda/controller/rutasController.php',
                     type: "POST",
                     data: function (d) {
                         return $.extend({}, d, {
-                            action: "showAll_vuelos"
+                            action: "showAll_rutas"
                         });
                     }
                 },
                 drawCallback: function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-                    $('#dt_vuelos').DataTable().columns.adjust().responsive.recalc();
+                    $('#dt_rutas').DataTable().columns.adjust().responsive.recalc();
                 }
             });
         }
@@ -270,7 +269,7 @@ function cargarTablas() {
         "use strict";
         return {
             init: function () {
-                dataTableVuelos_const();
+                dataTableRutas_const();
                 $(".dataTables_filter input").addClass("form-control input-rounded ml-sm");
             }
         };
@@ -280,11 +279,11 @@ function cargarTablas() {
 }
 
 //*******************************************************************************
-//evento que reajusta la tabla en el tamaño de la pantall 
-//
-//
+//evento que reajusta la tabla en el tamaño de la pantall
 //*******************************************************************************
 
 window.onresize = function () {
-    $('#dt_vuelos').DataTable().columns.adjust().responsive.recalc();
+    $('#dt_rutas').DataTable().columns.adjust().responsive.recalc();
 };
+
+

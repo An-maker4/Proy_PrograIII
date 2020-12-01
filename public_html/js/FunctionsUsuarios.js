@@ -25,7 +25,7 @@ var dt_lenguaje_espanol = {
 $(function () { //para la creación de los controles
     //agrega los eventos las capas necesarias
     $("#enviar").click(function () {
-        addOrUpdatePersonas(false);
+        addOrUpdatePersonas();
     });
     
     //agrega los eventos las capas necesarias
@@ -53,7 +53,7 @@ $(document).ready(function () {
 //Agregar o modificar la información
 //*********************************************************************
 
-function addOrUpdatePersonas(ocultarModalBool) {
+function addOrUpdatePersonas() {
     //Se envia la información por ajax
     if (validar()) {
         $.ajax({
@@ -188,7 +188,6 @@ function showPersonasByID(PK_cedula) {
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             var objPersonasJSon = JSON.parse(data);
             $("#txtUsuario").val(objPersonasJSon.usuario);
-            $("#txtContrasena").val(objPersonasJSon.contrasena);
             $("#txtNombre").val(objPersonasJSon.nombre);
             $("#txtApellido1").val(objPersonasJSon.apellido1);
             $("#txtApellido2").val(objPersonasJSon.apellido2);
@@ -263,7 +262,7 @@ function cargarTablas() {
                 ],
                 "columnDefs": [
                     {
-                        targets: 12,
+                        targets: 11,
                         className: "dt-center",
                         render: function (data, type, row, meta) {
                             var botones = '<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" onclick="showPersonasByID(\''+row[0]+'\');">Cargar</button> ';
