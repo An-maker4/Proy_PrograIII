@@ -99,7 +99,7 @@ class T_AvionesDao {
             $valores["Fecha"]                   = $tipo_avion->getFecha();
             $valores["Modelo"]                  = $tipo_avion->getModelo();
             $valores["Marca"]                   = $tipo_avion->getMarca();
-            $valores["Fila"]                    = $tipo_avion->getFilao();
+            $valores["Fila"]                    = $tipo_avion->getFila();
             $valores["Asiento_Fila"]            = $tipo_avion->getAsiento_Fila();
             $valores["idTipo_Avion"]            = $tipo_avion->getIdTipo_Avion();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());

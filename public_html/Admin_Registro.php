@@ -20,7 +20,7 @@
         <link rel="stylesheet" type="text/css" href="css/datepicker.css"/>
         <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
         <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
-        <link rel="stylesheet" href="css/templatemo-style-registro-admin.css">         
+        <link rel="stylesheet" href="css/templatemo-style-admin-registro.css">         
         <link href="lib/animate.css/animate.min.css" rel="stylesheet" type="text/css"/>   
         <link href="lib/dataTableFull/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="lib/dataTableFull/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
@@ -84,13 +84,19 @@
                                 
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="Inicio.php#top">Inicio<span class="sr-only">(current)</span></a>
+                                        <a class="nav-link active" href="Inicio.php#top">Salida<span class="sr-only">(current)</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="Inicio.php">Aministracion</a>
+                                        <a class="nav-link" href="Admin_Reserva.php">Reservas</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="Ingreso.php">Ingresar</a>
+                                        <a class="nav-link" href="Admin_Vuelo.php">Vuelos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Admin_Ruta.php">Rutas</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Admin_Avion.php">Aviones</a>
                                     </li>
                                 </ul>
                                 
@@ -147,7 +153,7 @@
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">
                                             <label>Contrasena</label>
-                                            <input type="password" id="txtContrasena" class="form-control" placeholder="Contraseña" />
+                                                <input type="password" id="txtContrasena" class="form-control" placeholder="Contrasena" />
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
                                             <label>Nombre</label>
@@ -162,17 +168,17 @@
                                         </div>   
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">        
                                             <label>Correo electronico</label>
-                                                <input type="email" id="txtCorreo" class="form-control" placeholder="Email" />
+                                                <input type="email" id="txtCorreo" class="form-control" placeholder="Example@email.com" />
                                             <label>Direccion</label>
-                                                <input type="text" id="txtDireccion" class="form-control" placeholder="Direccion" /> 
+                                                <input type="text" id="txtDireccion" class="form-control" placeholder="Distrito, Canton, Provincia" /> 
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">   
                                             <label>Telefono Celular</label>
-                                                <input type="txt" id="txtTel1" class="form-control"  placeholder="22222222">
+                                                <input type="tel" id="txtTel1" class="form-control"  placeholder="12345678"  pattern="[0-9]{8}">
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">    
                                             <label>Telefono Fijo</label>
-                                                <input type="txt" id="txtTel2" name="phone" class="form-control" placeholder="22222222">
+                                                <input type="tel" id="txtTel2" name="phone" class="form-control" placeholder="12345678"  pattern="[0-9]{8}">
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2"> 
                                             <label for="inputCheckIn">Genero</label> 
@@ -183,12 +189,12 @@
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2"> 
                                             <label for="inputCheckIn">Fecha de nacimiento</label> 
-                                            <input type="text" class="form-control" id="txtFecha" placeholder="2020-12-12">
+                                            <input type="text" class="form-control" id="txtFecha" placeholder="AA-MM-DD">
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">        
                                             <label>Tipo Usuario</label>
                                             <input type="txt" id="txtTip" class="form-control" placeholder="1: Usuario o 2:Admin" />
-                                        </div>
+                                        </div>                                       
                                         
                                         <!-- Espacios: F -->
                                         
@@ -228,43 +234,47 @@
                 
                 <section>
                     
-                <!-- encabezado: I -->    
-                    
-                    <br>
-                    <h3>Tabla con informacion de los Usuarios</h3>
-                    <br><br>
-                    
-                <!-- encanbezado: F -->
+                    <div style="padding: 20px;">
+                        
+                        <!-- encabezado: I -->    
+
+                            <br>
+                            <h3>Tabla con informacion de los Usuarios</h3>
+                            <br><br>
+
+                        <!-- encanbezado: F -->
+
+                        <!-- Datos: I -->
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table id="dt_personas"  class="table  table-hover dt-responsive nowrap" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>USUARIO</th>
+                                                <th>NOMBRE</th>
+                                                <th>APELLIDO1</th>
+                                                <th>APELLIDO2</th>
+                                                <th>CORREO</th>
+                                                <th>FEC. NACIMIENTO</th>
+                                                <th>DIRECCION</th>
+                                                <th>TEL1</th>
+                                                <th>TEL2</th>
+                                                <th>TIP</th>
+                                                <th>SEXO</th>
+                                                <th>ACCION</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+
+                        <!-- Datos: F -->
+
+                        <br><br><br><br>
                 
-                <!-- Datos: I -->
-                
-                    <div class="row">
-                        <div class="col-md-12">
-                            <table id="dt_personas"  class="table  table-hover dt-responsive nowrap" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th>USUARIO</th>
-                                        <th>NUMERO</th>
-                                        <th>NOMBRE</th>
-                                        <th>APELLIDO1</th>
-                                        <th>APELLIDO2</th>
-                                        <th>CORREO</th>
-                                        <th>FEC. NACIMIENTO</th>
-                                        <th>DIRECCION</th>
-                                        <th>TEL1</th>
-                                        <th>TEL2</th>
-                                        <th>TIP</th>
-                                        <th>SEXO</th>
-                                        <th>ACCION</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
                     </div>
-                
-                <!-- Datos: F -->
-                 
-                <br><br><br><br>
+                    
                 </section>
                
                 <!-- Tabla: F -->
@@ -324,7 +334,7 @@
         
         <script src="lib/sweetAlert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
         
-        <script type="text/javascript" src="js/usuariosFunctions.js"></script>
+        <script type="text/javascript" src="js/FunctionsUsuarios.js"></script>
  
     <!-- Documentos JS: F  -->
 

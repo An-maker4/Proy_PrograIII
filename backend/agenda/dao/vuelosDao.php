@@ -53,7 +53,7 @@ class VuelosDao {
     public function exist(Vuelos $vuelo) {
         $exist = false;
         try {
-            $sql = sprintf("select * from Vuelo where  id_Vuelo = %s ",
+            $sql = sprintf("select * from Vuelo where id_Vuelo = %s",
                             $this->labAdodb->Param("id_Vuelo"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
@@ -78,7 +78,7 @@ class VuelosDao {
         try {
             $sql = sprintf("update Vuelo set Fecha_Hora = %s, 
                                                 Ruta_idRuta = %s, 
-                                                Tipo_Avion_idTipo_Aviones = %s, 
+                                                Tipo_Avion_idTipo_Aviones = %s 
                             where id_Vuelo = %s",
                     $this->labAdodb->Param("Fecha_Hora"),
                     $this->labAdodb->Param("Ruta_idRuta"),
@@ -90,7 +90,7 @@ class VuelosDao {
 
             $valores["Fecha_Hora"]                  = $vuelo->getFecha_Hora();
             $valores["Ruta_idRuta"]                 = $vuelo->getRuta();
-            $valores["Tipo_Avion_idTipo_Aviones"]     = $vuelo->getAvion();
+            $valores["Tipo_Avion_idTipo_Aviones"]   = $vuelo->getAvion();
             $valores["id_Vuelo"]                    = $vuelo->getId_Vuelo();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {

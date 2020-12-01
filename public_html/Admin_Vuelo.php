@@ -19,7 +19,7 @@
         <link rel="stylesheet" type="text/css" href="css/datepicker.css"/>
         <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
         <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
-        <link rel="stylesheet" href="css/templatemo-style-vuelo-admin.css">                
+        <link rel="stylesheet" href="css/templatemo-style-admin-vuelo.css">                
         
         <!-- common css. required for every page-->
         
@@ -69,8 +69,6 @@
         </div>                                                          <!-- div1-1 -->
         
         <!-- Modal: F -->
-          
-        <!-- Modal: F -->
         
         <div class="tm-main-content" id="top">                          <!-- div1-2 -->
             
@@ -97,13 +95,19 @@
                                 
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="Inicio.php#top">Inicio<span class="sr-only">(current)</span></a>
+                                        <a class="nav-link active" href="Inicio.php#top">Salida<span class="sr-only">(current)</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="Inicio.php">Aministracion</a>
+                                        <a class="nav-link" href="Admin_Registro.php">Registro</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="Ingreso.php">Ingresar</a>
+                                        <a class="nav-link" href="Admin_Reserva.php">Reservas</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Admin_Ruta.php">Rutas</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Admin_Avion.php">Aviones</a>
                                     </li>
                                 </ul>
                                 
@@ -136,7 +140,7 @@
                             <div class="row tm-banner-row tm-banner-row-header">
                                 <div class="col-xs-12">
                                     <div class="tm-banner-header">
-                                        <h1 class="text-uppercase tm-banner-title">Registro de horarios</h1> 
+                                        <h1 class="text-uppercase tm-banner-title">Registro de vuelos asociados</h1> 
                                         <p class="tm-banner-subtitle">Nuestra recompensa se encuentra en el esfuerzo.</p>
                                     </div>    
                                 </div>                      
@@ -158,11 +162,11 @@
                                             <label>ID Vuelo</label>
                                                 <input type="text" id="txtVuelo" class="form-control" placeholder="Numero del vuelo" />
                                             <label>Fecha y hora de vuelo</label>
-                                                <input type="text" id="txtFecha" class="form-control" placeholder="Salida" />
+                                                <input type="text" id="txtFecha" class="form-control" placeholder="AA-MM-DD HH:MM:SS" />
                                             <label>Ruta del vuelo</label>
-                                                <input type="text" id="txtRuta" class="form-control" placeholder="Ruta" />
+                                                <input type="text" id="txtRuta" class="form-control" placeholder="ID Ruta asociada" />
                                             <label>Avion del vuelo</label>
-                                                <input type="text" id="txtAvion" class="form-control" placeholder="Avion perteneciente al vuelo" />
+                                                <input type="text" id="txtAvion" class="form-control" placeholder="ID Avion que perteneciente al vuelo..." />
                                         
                                         </div>
                                         
@@ -171,8 +175,8 @@
                                             <!-- Botones: I -->
                                             
                                             <div class="form-group tm-form-group tm-form-group-pad tm-form-group-4">
-                                            <input type="hidden" id="typeAction" value="add_vuelos" />
-                                            <input type="hidden" value="" id="idTarea"/>
+                                                <input type="hidden" id="typeAction" value="add_vuelos" />
+                                                <input type="hidden" value="" id="idTarea"/>
                                                 <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="enviar">Ingresar registro</button>
                                             </div>
                                             
@@ -197,40 +201,44 @@
                     
                 </section>
                 
-                <!--  Seccion formunario: F -->
-                
-                <!-- Tabla: I -->
-                
-                <section>
+                    <div style="padding: 20px;">
+                         
+                        <!--  Seccion formunario: F -->
+
+                        <!-- Tabla: I -->
+
+                        <section>
+
+                        <!-- encabezado: I -->    
+
+                            <br>
+                            <h3>Tabla con informacion de los vuelos</h3>
+                            <br><br>
+                        <!-- encanbezado: F -->
+
+                        <!-- Datos: I -->
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table id="dt_vuelos"  class="table  table-hover dt-responsive nowrap" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>ID VUELO</th>
+                                                <th>FECHA</th>
+                                                <th>ID RUTA</th>
+                                                <th>ID AVION</th>
+                                                <th>ACCION</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+
+                        <!-- Datos: F -->
+
+                        <br><br><br><br>
                     
-                <!-- encabezado: I -->    
-                    
-                    <br>
-                    <h3>Tabla con informacion de los vuelos</h3>
-                    <br><br>
-                <!-- encanbezado: F -->
-                
-                <!-- Datos: I -->
-                
-                    <div class="row">
-                        <div class="col-md-12">
-                            <table id="dt_vuelos"  class="table  table-hover dt-responsive nowrap" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th>VUELO</th>
-                                        <th>FECHA</th>
-                                        <th>RUTA</th>
-                                        <th>AVION</th>
-                                        <th>ACCION</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
                     </div>
-                
-                <!-- Datos: F -->
-                 
-                <br><br><br><br>
                 
                 </section>
                 
@@ -292,7 +300,7 @@
         
         <script src="lib/sweetAlert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
         
-        <script type="text/javascript" src="js/vuelosFunctions.js"></script>
+        <script type="text/javascript" src="js/FunctionsVuelos.js"></script>
     
     <!-- Documentos JS: F  -->
 

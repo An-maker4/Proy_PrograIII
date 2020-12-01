@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="css/templatemo-style-registro.css">                
         
         <script src="lib/jquery/dist/jquery.min.js" type="text/javascript"></script>
-        <script type="text/javascript" src="js/personasFunctions.js"></script>
+        <script type="text/javascript" src="js/FunctionsPersonas.js"></script>
         
         <script src="lib/sweetAlert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
         <link href="lib/sweetAlert2/dist/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
@@ -149,7 +149,7 @@
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">
                                             <label>Contrasena</label>
-                                                <input type="text" id="txtContrasena" class="form-control" placeholder="Contraseña" />
+                                                <input type="password" id="txtContrasena" class="form-control" placeholder="Contraseña" />
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
                                             <label>Nombre</label>
@@ -164,17 +164,17 @@
                                         </div>   
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">        
                                             <label>Correo electronico</label>
-                                                <input type="email" id="txtCorreo" class="form-control" placeholder="Email" />
+                                                <input type="email" id="txtCorreo" class="form-control" placeholder="Example@email.com" />
                                             <label>Direccion</label>
-                                                <input type="text" id="txtDireccion" class="form-control" placeholder="Direccion" /> 
+                                                <input type="text" id="txtDireccion" class="form-control" placeholder="Distrito, Canton, Provincia" /> 
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-1">   
                                             <label>Telefono Celular</label>
-                                                <input type="txt" id="txtTel1" class="form-control"  placeholder="22222222">
+                                                <input type="tel" id="txtTel1" class="form-control"  placeholder="12345678"  pattern="[0-9]{8}">
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2">    
                                             <label>Telefono Fijo</label>
-                                                <input type="txt" id="txtTel2" name="phone" class="form-control" placeholder="22222222">
+                                                <input type="tel" id="txtTel2" name="phone" class="form-control" placeholder="12345678"  pattern="[0-9]{8}">
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2"> 
                                             <label for="inputCheckIn">Genero</label> 
@@ -185,7 +185,7 @@
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-2"> 
                                             <label for="inputCheckIn">Fecha de nacimiento</label> 
-                                            <input type="text" class="form-control" id="txtFecha" placeholder="Fri Oct 16 2020">
+                                            <input type="text" class="form-control" id="txtFecha" placeholder="AA-MM-DD">
                                         </div>
                                         <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">        
                                             <label>Tipo Usuario</label>

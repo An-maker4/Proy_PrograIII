@@ -25,6 +25,7 @@ if (filter_input(INPUT_POST, 'action') != null) {
                 $myReservas->setNumero_Asiento(filter_input(INPUT_POST, 'Numero_Asiento'));
                 $myReservas->setVuelo(filter_input(INPUT_POST, 'Vuelo_id_Vuelo'));
                 $myReservas->setUsuario(filter_input(INPUT_POST, 'Persona_Usuario1'));
+                $myReservas->setIdReserva(filter_input(INPUT_POST, 'idReservacion'));
                 if ($action == "add_reservas") {
                     $myReservasBo->add($myReservas);
                     echo('M~Registro Incluido Correctamente');
@@ -88,4 +89,3 @@ if (filter_input(INPUT_POST, 'action') != null) {
     echo('E~Parametros no enviados desde el formulario'); //se codifica un mensaje para enviar
 }
 ?>
-

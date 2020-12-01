@@ -19,12 +19,27 @@
         <link rel="stylesheet" type="text/css" href="css/datepicker.css"/>
         <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
         <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
-        <link rel="stylesheet" href="css/templatemo-style-avion-admin.css">                
+        <link rel="stylesheet" href="css/templatemo-style-admin-avion.css">                
         
-        <script src="lib/jquery/dist/jquery.min.js" type="text/javascript"></script>
-        <script type="text/javascript" src="js/tipo_avionesFunctions.js"></script>
+        <!-- common css. required for every page-->
         
-        <script src="lib/sweetAlert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
+        
+        
+        <link href="lib/animate.css/animate.min.css" rel="stylesheet" type="text/css"/>
+        
+        <!-- Page scripts -->
+        <!-- Datatables -->
+        
+        
+        
+        <link href="lib/dataTableFull/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="lib/dataTableFull/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+        <link href="lib/dataTableFull/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+        <link href="lib/dataTableFull/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+        <link href="lib/dataTableFull/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+        <link href="lib/dataTableFull/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+        
+       
         <link href="lib/sweetAlert2/dist/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
         
     </head>
@@ -81,13 +96,19 @@
                                 
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="Inicio.php#top">Inicio<span class="sr-only">(current)</span></a>
+                                        <a class="nav-link active" href="Inicio.php#top">Salida<span class="sr-only">(current)</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="Inicio.php">Aministracion</a>
+                                        <a class="nav-link" href="Admin_Registro.php">Registro</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="Ingreso.php">Ingresar</a>
+                                        <a class="nav-link" href="Admin_Reserva.php">Reservas</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Admin_Vuelo.php">Vuelos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="Admin_Ruta.php">Rutas</a>
                                     </li>
                                 </ul>
                                 
@@ -169,14 +190,6 @@
                                                 <button type="reset" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="cancelar">Cancelar</button>
                                             </div>
                                             
-                                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-4">
-                                                <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="buscar">Buscar</button>
-                                            </div>
-                                            
-                                            <div class="form-group tm-form-group tm-form-group-pad tm-form-group-4">
-                                                <button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" id="borrar">Borrar</button>
-                                            </div>
-                                            
                                             <!-- Botones: F --> 
                                             
                                         
@@ -201,20 +214,40 @@
                 
                 <section>
                     
-                <!-- encabezado: I -->    
+                    <div style="padding: 20px;">
                     
-                    <br>
-                    <h3>Tabla con informacion de los aviones</h3>
-                    <br><br>
-                <!-- encanbezado: F -->
+                        <!-- encabezado: I -->    
+
+                            <br>
+                            <h3>Tabla con informacion de los aviones</h3>
+                            <br><br>
+                        <!-- encanbezado: F -->
                 
-                <!-- Datos: I -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="divResult" style="text-align:center;">Resultado de la consulta</div>
-                        </div>
+                        <!-- Datos: I -->
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table id="dt_aviones"  class="table  table-hover dt-responsive nowrap" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>ID AVION</th>
+                                                <th>AÑO</th>
+                                                <th>MODELO</th>
+                                                <th>MARCA</th>
+                                                <th>FILAS</th>
+                                                <th>ASIE. X FIL.</th>
+                                                <th>ACCION</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+
+                        <!-- Datos: F -->
+
+                        <br><br><br><br>
+                
                     </div>
-                <!-- Datos: F -->
                 
                 </section>
                 
@@ -259,8 +292,27 @@
 
     </script> 
     
+    <!-- Page scripts -->
+    
+        <!-- Datatables -->
+        <script src="lib/dataTableFull/datatables/media/js/jquery.dataTables.js"></script>
+        <script src="lib/dataTableFull/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-buttons/js/buttons.flash.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-buttons/js/buttons.html5.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-buttons/js/buttons.print.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="lib/dataTableFull/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+        
+        <script src="lib/sweetAlert2/dist/sweetalert2.all.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript" src="js/FunctionsTipo_Aviones.js"></script>
+    
     <!-- Documentos JS: F  -->
-
+    
     </body>
     
     <!-- Cuerpo: F -->
