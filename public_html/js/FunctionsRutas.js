@@ -82,6 +82,7 @@ function addOrUpdateRutas() {
                 if (typeOfMessage === "M~") { //si todo esta corecto
                     swal("Confirmacion", responseText, "success");
                     clearFormRutas();
+                    $("#typeAction").val("add_rutas");
                     $("#dt_rutas").DataTable().ajax.reload();
                 } else {//existe un error
                     swal("Error", responseText, "error");

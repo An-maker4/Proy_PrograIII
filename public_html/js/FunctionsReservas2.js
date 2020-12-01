@@ -80,6 +80,7 @@ function addOrUpdateReservas() {
                 if (typeOfMessage === "M~") { //si todo esta corecto
                     swal("Confirmacion", responseText, "success");
                     clearFormReservas();
+                    $("#typeAction").val("add_reservas");
                     $("#dt_reserva").DataTable().ajax.reload();
                 } else {//existe un error
                     swal("Error", responseText, "error");

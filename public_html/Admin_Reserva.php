@@ -101,7 +101,7 @@
                                         <a class="nav-link" href="Admin_Registro.php">Registro</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="Admin_Reserva.php">Reservas</a>
+                                        <a class="nav-link" href="Admin_Vuelo.php">Vuelos</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="Admin_Ruta.php">Rutas</a>
@@ -140,7 +140,7 @@
                             <div class="row tm-banner-row tm-banner-row-header">
                                 <div class="col-xs-12">
                                     <div class="tm-banner-header">
-                                        <h1 class="text-uppercase tm-banner-title">Registro de vuelos</h1>
+                                        <h1 class="text-uppercase tm-banner-title">Registro de reservas</h1>
                                         <p class="tm-banner-subtitle">Nuestra recompensa se encuentra en el esfuerzo.</p>     
                                     </div>    
                                 </div>                      

@@ -83,6 +83,7 @@ function addOrUpdatePersonas() {
                 if (typeOfMessage === "M~") { //si todo esta corecto
                     swal("Confirmacion", responseText, "success");
                     clearFormPersonas();
+                    $("#typeAction").val("add_personas");
                     $("#dt_personas").DataTable().ajax.reload();
                 } else {//existe un error
                     swal("Error", responseText, "error");

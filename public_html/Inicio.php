@@ -240,7 +240,7 @@
                                 <div class="tm-recommended-description-box">
                                     <h3 class="tm-recommended-title">Nueva York</h3>
                                     <p class="tm-text-highlight">Estados Unidos</p>
-                                    <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>   
+                                    <p class="tm-text-gray">Tal vez la razón más fuerte del por qué debes ir a Nueva York es que es una ciudad que siempre te sorprenderá, en la Gran Manzana cada día siempre hay algo nuevo que hacer...</p>   
                                 </div>
                                     
                                 <a href="#" class="tm-recommended-price-box">
@@ -261,7 +261,7 @@
                                 <div class="tm-recommended-description-box">
                                     <h3 class="tm-recommended-title">Toronto</h3>
                                     <p class="tm-text-highlight">Canada</p>
-                                    <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>   
+                                    <p class="tm-text-gray">Canadá es un enorme país con grandes atractivos y es considerado uno de los más bellos del mundo debido a sus paisajes naturales y extensas áreas para realizar turismo de nieve, aventura o senderismo...</p>   
                                 </div>
                                     
                                 <a href="#" class="tm-recommended-price-box">
@@ -302,7 +302,7 @@
                             <div class="tm-recommended-description-box">
                                 <h3 class="tm-recommended-title">Santa Martha</h3>
                                 <p class="tm-text-highlight">Colombia</p>
-                                <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>   
+                                <p class="tm-text-gray">Santa Marta es la ciudad más antigua de Colombia y la segunda más antigua de Sudamérica. Se conoce como un atractivo turístico, porque es una ciudad que tiene de todo...</p>   
                             </div>
                                     
                             <a href="#" class="tm-recommended-price-box">
@@ -323,7 +323,7 @@
                             <div class="tm-recommended-description-box">
                                 <h3 class="tm-recommended-title">Santiago</h3>
                                 <p class="tm-text-highlight">Chile</p>
-                                <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>   
+                                <p class="tm-text-gray">Tiene varios encantos que pueden ser disfrutados por turistas de todo el mundo, gracias a que en ella se mezclan la cultura latinoamericana con la europea...</p>   
                             </div>
                             
                             <a href="#" class="tm-recommended-price-box">
@@ -364,8 +364,8 @@
                                     
                             <div class="tm-recommended-description-box">
                                     <h3 class="tm-recommended-title">Venecia</h3>
-                                    <p class="tm-text-highlight">Italy</p>
-                                    <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>   
+                                    <p class="tm-text-highlight">Italia</p>
+                                    <p class="tm-text-gray">Pasear por los canales en góndola: Aunque no es una actividad barata, pasear por los numerosos canales de Venecia es algo inolvidable...</p>   
                             </div>
                                     
                             <a href="#" class="tm-recommended-price-box">
@@ -385,8 +385,8 @@
                                     
                             <div class="tm-recommended-description-box">
                                 <h3 class="tm-recommended-title">Paris</h3>
-                                <p class="tm-text-highlight">France</p>
-                                <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>   
+                                <p class="tm-text-highlight">Francia</p>
+                                <p class="tm-text-gray">Es un país que lo tiene todo: ciudades maravillosas, pueblos llenos de encanto, paisajes espectaculares, historia y una deliciosa gastronomía...</p>   
                             </div>
                                     
                             <a href="#" class="tm-recommended-price-box">
@@ -429,7 +429,7 @@
                             <div class="tm-recommended-description-box">
                                 <h3 class="tm-recommended-title">Singapore</h3>
                                 <p class="tm-text-highlight">China</p>
-                                <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>   
+                                <p class="tm-text-gray">Es una ciudad moderna, limpísima y con una arquitectura futurista que impresiona...</p>   
                             </div>
      
                             <a href="#" class="tm-recommended-price-box">
@@ -450,7 +450,7 @@
                             <div class="tm-recommended-description-box">
                                 <h3 class="tm-recommended-title">Seul</h3>
                                 <p class="tm-text-highlight">Corea del sur</p>
-                                <p class="tm-text-gray">Sed egestas, odio nec bibendum mattis, quam odio hendrerit risus, eu varius eros lacus sit amet lectus. Donec blandit luctus dictum...</p>   
+                                <p class="tm-text-gray">Seúl es la razón por la que debes visitar Corea ya que es impresionante: en el barrio de Myeongdong los rótulos de las tiendas están siempre encendidos; puedes beber café, comer, ir a una sauna o incluso hacer tus compras ¡a cualquier hora del día o de la noche!...</p>   
                             </div>
                              
                             <a href="#" class="tm-recommended-price-box">
