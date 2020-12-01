@@ -1,0 +1,48 @@
+Admin: 
+Usuario: TotiAD 
+Contrasena: 123456
+Nombre: Joselyn
+Apellido1: Alvarado 
+Apellido2: Reyes
+Correo: Toti2020@gmail.com
+Fecha: 1998-01-01
+Direccion: San Jose 
+Tel1: 11223344
+Tel2: 44332211
+Tipo: 2
+Sexo: Femenino 
+
+Cliente:
+Usuario: NicoCL 
+Contrasena: 234567
+Nombre: Nicolle
+Apellido1: Duran 
+Apellido2: Martha 
+Correo: Nico2020@gmail.com 
+Fecha: 1999-01-01
+Direccion: Sabanilla 
+Tel1: 11221122
+Tel2: 33443344
+Tipo: 1
+Sexo: Femenino
+
+Avion: 
+ID: 20003
+Fecha: 2000
+Modelo: AV-01
+Marca: PILOT
+Fila: 3
+Asiento:3
+
+Ruta: 
+ID: 30
+Trayectoria: Seul - San Jose
+Duracion: 06:17:00
+Precio: 450
+
+Vuelo: 
+Id: 230
+Fecha: 2021-05-05 02:35:00
+Ruta: 30 
+Avion:10003
+ 
