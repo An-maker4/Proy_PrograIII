@@ -170,6 +170,7 @@ select.tm-select.form-control:not([size]):not([multiple]) { height: 45px; }
     padding: .75rem;
 }
 
+
 label { font-weight: 700; padding-top: 15px;}
 
 .tm-search-form {

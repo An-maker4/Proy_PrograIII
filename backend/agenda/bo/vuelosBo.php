@@ -69,7 +69,6 @@ class VuelosBo {
             throw $e;
         }
     }
-
 }
 
 //end of the class VuelosBo

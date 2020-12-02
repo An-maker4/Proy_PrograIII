@@ -9,7 +9,7 @@ class Vuelos extends BaseDomain implements \JsonSerializable{
     private $fecha_hora;
     private $ruta;
     private $avion;
-
+    
     //constructors
     public function __construct() {
         parent::__construct();

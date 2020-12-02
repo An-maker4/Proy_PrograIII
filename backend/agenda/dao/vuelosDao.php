@@ -2,6 +2,7 @@
 
 require_once("../../utlis/adodb5/adodb.inc.php");
 require_once("../domain/vuelos.php");
+require_once("../domain/tipo_aviones.php");
 
 //this attribute enable to see the SQL's executed in the data base
 //$this->labAdodb->debug=true;
