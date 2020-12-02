@@ -6,9 +6,9 @@ insert into mydb.persona (Usuario,Contrasena,Nombre,Apellido1,Apellido2,Correo,F
 			Value ("AleAD","234567","Alejandro","Ramos","Bosa","Ale2020@gmail.com","1991-06-06","Catedral,San Jose,San Jose","88998899","66776677",2,2);
 
 insert into mydb.tipo_avion (idTipo_Avion, Fecha, Modelo, Marca, Fila, Asiento_Fila)
-			value (10001,1997,"AV-01","PILOT",3,3); 
+			value (10001,1997,"AV-01","PILOT",4,3); 
 insert into mydb.tipo_avion (idTipo_Avion, Fecha, Modelo, Marca, Fila, Asiento_Fila)
-			value (10002,2010,"AV-02","PILOT",3,3); 
+			value (10002,2010,"AV-02","PILOT",5,3); 
             
 insert into mydb.ruta (idRuta,Trayecto,Duracion,Precio)
 			Value (23,"Nueva York - San Jose", "01:00:00",110);
@@ -41,8 +41,8 @@ insert into mydb.vuelo (id_Vuelo,Fecha_Hora,Ruta_idRuta,tipo_avion_idTipo_Avione
 			Value (290,"2021-01-05 17:19:00",29,10001);
 
 insert into mydb.reservacion(Numero_Fila,Numero_Asiento,Vuelo_id_Vuelo,Fecha_Reserva,Persona_Usuario1)
-			value(7,"B",270,curdate(),"EliCL");
+			value(4,1,270,curdate(),"EliCL");
 insert into mydb.reservacion(Numero_Fila,Numero_Asiento,Vuelo_id_Vuelo,Fecha_Reserva,Persona_Usuario1)
-			value(8,"C",250,curdate(),"EliCL");
+			value(2,3,250,curdate(),"EliCL");
 
 select * from mydb.reservacion;
