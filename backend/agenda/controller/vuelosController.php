@@ -3,10 +3,6 @@
 require_once("../bo/vuelosBo.php");
 require_once("../domain/vuelos.php");
 
-
-
-
-
 //************************************************************
 // Personas Controller 
 //************************************************************
@@ -65,7 +61,7 @@ if (filter_input(INPUT_POST, 'action') != null) {
                 if ($myVuelo != null) {
                     echo json_encode(($myVuelo));
                 } else {
-                    echo('E~NO Existe un cliente con el ID especificado');
+                    echo('E~NO Existe el vuelo con el ID especificado');
                 }
             }
         }
