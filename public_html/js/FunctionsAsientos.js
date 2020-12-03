@@ -90,7 +90,14 @@ function showVuelosByID(PK_vuelo) {
             document.getElementById("txtFila").value = "";
             document.getElementById("txtAsiento").value = "";
             $("#txtAvion").val(objVuelosJSon.avion);
+            $("#parte0").html("");
             $("#parte1").html("");
+            $("#parte2").html("");
+            $("#partex").html("");
+            $("#parte3").html("");
+            $("#parte4").html("");
+            $("#parte5").html("");
+            $("#cabecera").html("");
             showTipo_AvionesByID();
             swal("Confirmacion", "Los datos de la vuelos fueron cargados correctamente", "success");
         },
@@ -111,11 +118,25 @@ function showTipo_AvionesByID() {
         },
         success: function (data) { //si todo esta correcto en la respuesta del ajax, la respuesta queda en el data
             var objTipo_AvionesJSon = JSON.parse(data);
-            for(var i=1; i<= objTipo_AvionesJSon.fila; i++){
-                for(var j=1; j<= objTipo_AvionesJSon.asiento_fila; j++){
-                    $("#parte1").append('<td><button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" onclick="setAsientos('+i+','+j+')">F'+i+'A'+j+'</button></td>');
+            
+            for(var i=1; i<=objTipo_AvionesJSon.fila; i++){
+                
+            $('#parte'+j+'').append('<td align = "center" style="background-color:black; color:white">Ventana</td>');
+            
+                for(var j=0; j<= objTipo_AvionesJSon.asiento_fila; j++){    
+                    
+                    if(j!==0){
+                    $('#parte'+j+'').append('<td><button type="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" onclick="setAsientos('+i+','+j+')">F'+i+'A'+j+'</button></td>');
+                    }else{
+                    $('#partex').append('<td align = "center" style="background-color:black; color:white">X</td>');
+                    $('#parte0').append('<td align = "center" style="background-color:black; color:white">Ventana</td>');
+                    }
+                    
                 }
+                
             }
+            
+            $('#parte'+j+'').append('<td align = "center" style="background-color:black; color:white">Ventana</td>');
         },
         type: 'POST'
     });

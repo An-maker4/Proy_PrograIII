@@ -181,9 +181,16 @@
         
         <section>
             
-            <div class="tm-page-wrap mx-auto tm-asientos ">
+            <div class="tm-page-wrap mx-auto" style="position: relative; background-image: url(img/nubes1.jpg)">;
+                
+                 <!-- Formulario: I -->
+                        
+                <div class="row tm-banner-pay">
             
                 <form class="paypal" action="../paypal/payments.php" method="post" id="paypal_form">
+                    
+                    <div class="form-row tm-search-form-row">                                     
+                        <div class="form-group tm-form-group tm-form-group-pad tm-form-group-3">
                     
                     <!--Espacios: I-->
                     
@@ -198,13 +205,17 @@
                     <input type="hidden" name="precio_item" id="precio_item" />
                     <input type="hidden" name="vuelo_item" id="vuelo_item" />
                     <input type="hidden" name="bool_item" id="bool_item" value = "true" />
+                    <label>Antes de pagar debe escoger su vuelo, asiento y registrar su reserva</label>
                     <input type="submit" name="submit" class="btn btn-primary tm-btn tm-btn-search text-uppercase" value="HACER PAGO DEL VUELO"/>
                     
                     <!--Espacios: F-->
-            
+                    
+                        </div>
+                    </div>
                 </form>
             
             </div>
+            </div>         
         
         </section>
         
@@ -213,31 +224,19 @@
         <!--Asientos: I -->    
             
         <section>
-            
-            <div class="tm-page-wrap mx-auto tm-asientos ">
-                
-                <button type="submit" class="btn-gen-asiento btn-asiento1 active" id="7a">A</button>
-                <button type="submit" class="btn-gen-asiento btn-asiento2 active" id="7b">B</button>
-                <button type="submit" class="btn-gen-asiento btn-asiento3 active" id="7c">C</button>
-                <button type="submit" class="btn-gen-asiento btn-asiento4 active" id="7d">D</button>
-                <button type="submit" class="btn-gen-asiento btn-asiento5 active" id="7e">E</button>
-                <button type="submit" class="btn-gen-asiento btn-asiento6 active" id="7f">F</button>
-                <button type="submit" class="btn-gen-asiento btn-asiento7 active" id="8a">A</button>
-                <button type="submit" class="btn-gen-asiento btn-asiento8 active" id="8b">B</button>
-                <button type="submit" class="btn-gen-asiento btn-asiento9 active" id="8c">C</button>
-                <button type="submit" class="btn-gen-asiento btn-asiento10 active" id="8d">D</button>
-                <button type="submit" class="btn-gen-asiento btn-asiento11 active" id="8e">E</button>
-                <button type="submit" class="btn-gen-asiento btn-asiento12 active" id="8f">F</button>
-                <button type="submit" class="btn-gen-asiento btn-asiento13 active" id="9a">A</button>
-                <button type="submit" class="btn-gen-asiento btn-asiento14 active" id="9b">B</button>
-                <button type="submit" class="btn-gen-asiento btn-asiento15 active" id="9c">C</button>
-                <button type="submit" class="btn-gen-asiento btn-asiento16 active" id="9d">D</button>
-                <button type="submit" class="btn-gen-asiento btn-asiento17 active" id="9e">E</button>
-                <button type="submit" class="btn-gen-asiento btn-asiento18 active" id="9f">F</button>
-                <img src="img/airbus-320-seatguru.gif" alt="Asientos" class="img-asiento img-fluid"> 
-                
+            <div class="tm-page-wrap mx-auto" style="position: relative; background-image: url(img/nubes2.jpg); padding-top: 50px; padding-bottom: 50px;">
+                    <input type="hidden" class="form-control" id="txtAvion" placeholder="Avion del Vuelo elegido..." readonly> 
+                    <div id="cabecera"></div>
+                    <table style="margin: 0 auto;">
+                        <tr id="parte0"></tr>
+                        <tr id="parte1"><!-- asientos--></tr>
+                        <tr id="parte2"><!-- asientos--></tr>
+                        <tr id="partex"><!--pasillos--></tr>
+                        <tr id="parte3"><!-- asientos--></tr>
+                        <tr id="parte4"><!-- asientos--></tr>
+                        <tr id="parte5"><!-- asientos--></tr>
+                    </table>
             </div>
-            
         </section>
         
         <!--Asientos: I -->  
