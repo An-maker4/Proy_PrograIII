@@ -124,7 +124,7 @@
                                     <div class="tm-banner-header">
                                         <h1 class="text-uppercase tm-banner-title">Registro usuario</h1>
                                         <p class="tm-banner-subtitle">Gracias por preferirnos, esperamos que tenga una buena experiencia.</p>
-                                        </div>    
+                                    </div>    
                                 </div>                      
                             </div> 
                             
