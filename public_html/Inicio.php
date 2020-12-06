@@ -1,4 +1,6 @@
 <?php
+session_name("proyecto");
+session_start();
 ?>
 <!DOCTYPE html>
     <html lang="en">
@@ -53,24 +55,58 @@
                                 
                                 <!-- Menu: I -->
                                 
-                                <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="#top">Inicio<span class="sr-only">(current)</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#tm-section-2">Somos</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#tm-section-3">Lugares</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#tm-section-4">Contactenos</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="Ingreso.php">Ingresar</a>
-                                    </li>
-                                </ul>
-                                
+                                <?php
+                                    if (!(isset($_SESSION["proyecto_usuario"])) && !(isset($_SESSION["proyecto_tipo_usuario"]))) {
+                                        echo ('<ul class="navbar-nav ml-auto">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" href="#top">Inicio<span class="sr-only">(current)</span></a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="#tm-section-2">Somos</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="#tm-section-3">Lugares</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="#tm-section-4">Contactenos</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="Ingreso.php">Ingresar</a>
+                                                    </li>
+                                               </ul>');
+                                    }else if($_SESSION["proyecto_tipo_usuario"]==="1"){
+                                        echo ('<ul class="navbar-nav ml-auto">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" href="Inicio.php">Inicio<span class="sr-only">(current)</span></a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="Reserva.php">Reserva</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="../backend/agenda/Sesiones/sesion_destruir.php">Salida</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link">'.$_SESSION["proyecto_usuario"].'</a>
+                                                    </li>
+                                               </ul>');
+                                    }else if($_SESSION["proyecto_tipo_usuario"]==="2"){
+                                        echo ('<ul class="navbar-nav ml-auto">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" href="Inicio.php">Inicio<span class="sr-only">(current)</span></a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="Admin_Registro.php">Administracion</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="../backend/agenda/Sesiones/sesion_destruir.php">Salida</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link">'.$_SESSION["proyecto_usuario"].'</a>
+                                                    </li>
+                                               </ul>');  
+                                    }
+                                ?>
+
                             <!-- Menu: F -->
                                 
                             </div>
@@ -102,7 +138,13 @@
                                     <div class="tm-banner-header">
                                         <a href="index.html"><img class ="logo_banner" src="img/logodefinitivowhite.png" alt="" /></a>
                                         <h1 class="text-uppercase tm-banner-title">Viaje de forma segura con AeroVida</h1>
-                                        <p class="tm-banner-subtitle">«Vive, viaja, corre aventuras, bendice y no lo lamentes». - Jack Kerouac</p>
+                                            <?php
+                                                if (!(isset($_SESSION["proyecto_usuario"])) && !(isset($_SESSION["proyecto_tipo_usuario"]))) {
+                                                    echo ('<p class="tm-banner-subtitle">«Vive, viaja, corre aventuras, bendice y no lo lamentes». - Jack Kerouac</p>');
+                                                }else{
+                                                    echo ('<p class="tm-banner-subtitle">Bienvenido a la experiencia AeroVida, '.$_SESSION["proyecto_usuario"].'.</p>');
+                                                }
+                                            ?>
                                     </div>    
                                 </div>                        
                             </div>

@@ -1,5 +1,6 @@
 <?php
 ?>
+
 <!DOCTYPE html>
     <html lang="en">
     
@@ -88,9 +89,6 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="Inicio.php#tm-section-4">Contactenos</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="Ingreso.php">Ingresar</a>
-                                    </li>
                                 </ul>
                             
                                 <!-- Menu: F -->
@@ -143,7 +141,7 @@
                                             <!-- Espacios: I --> 
                                             
                                             <label>Usuario</label>
-                                                <input type="text" id="txtUsuarioI" class="form-control" placeholder="Usuario" />
+                                                <input type="text" id="txtUsuarioI" name="Usuario" class="form-control" placeholder="Usuario" />
                                             <label>Contrasena</label>
                                                 <input type="password" id="txtContrasena" class="form-control" placeholder="Contraseña" />
                                                 
@@ -179,7 +177,7 @@
                 </section>
                 
                <!-- Seccion formunario: F -->
-                
+
                 <!-- Seccion Info: I -->
                     
                 <section class="p-5 tm-container-outer tm-bg-gray">
