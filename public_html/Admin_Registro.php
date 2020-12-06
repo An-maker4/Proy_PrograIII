@@ -1,4 +1,6 @@
 <?php
+session_name("proyecto");
+session_start();
 ?>
 <!DOCTYPE html>
     <html lang="en">
@@ -84,7 +86,7 @@
                                 
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="Inicio.php#top">Salida<span class="sr-only">(current)</span></a>
+                                        <a class="nav-link active" href="Inicio.php#top">Regreso<span class="sr-only">(current)</span></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="Admin_Reserva.php">Reservas</a>
@@ -97,6 +99,11 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="Admin_Avion.php">Aviones</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <?php
+                                        echo('<a class="nav-link">'.$_SESSION["proyecto_usuario"].'</a>');
+                                        ?>
                                     </li>
                                 </ul>
                                 

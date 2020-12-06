@@ -92,11 +92,19 @@ if (filter_input(INPUT_POST, 'action') != null) {
         
         if ($action === "into_personas") {//accion de mostrar cliente por ID
             //se valida que los parametros hayan sido enviados por post
-            if (filter_input(INPUT_POST, 'Usuario') != null) {
+            if (filter_input(INPUT_POST, 'Usuario') != null && filter_input(INPUT_POST, 'Contrasena') != null) {
                 $myPersonas->setUsuario(filter_input(INPUT_POST, 'Usuario'));
                 $myPersonas = $myPersonasBo->IntoById($myPersonas);
+                $contrasena = filter_input(INPUT_POST, 'Contrasena');
                 if ($myPersonas != null) {
-                    echo json_encode(($myPersonas));
+                    if($myPersonas->getContrasena() === $contrasena ){                       
+                        session_name("proyecto");
+                        session_start();
+                        $_SESSION["proyecto_usuario"] = $myPersonas->getUsuario(); 
+                        $_SESSION["proyecto_tipo_usuario"] = $myPersonas->getTipo_Usuario();
+                    }else{
+                        echo('E~Usuairio y/o contrasena invalidos');
+                    }
                 } else {
                     echo('E~NO Existe un usuario con el ID especificado');
                 }

@@ -1,4 +1,6 @@
 <?php
+session_name("proyecto");
+session_start();
 ?>
 <!DOCTYPE html>
     <html lang="en">
@@ -74,17 +76,33 @@
                                 
                                 <!-- Menu: I -->
                                 
-                                <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="Inicio.php">Inicio<span class="sr-only">(current)</span></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="Inicio.php">Salida</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="Ingreso.php">Ingresar</a>
-                                    </li>
-                                </ul>
+                                <?php
+                                    if (!(isset($_SESSION["proyecto_usuario"])) && !(isset($_SESSION["proyecto_tipo_usuario"]))) {
+                                        echo('<ul class="navbar-nav ml-auto">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" href="Inicio.php">Inicio<span class="sr-only">(current)</span></a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link"  href="../backend/agenda/Sesiones/sesion_destruir.php">Salida</a>
+                                                </li>
+                                            </ul>');
+                                    }else{
+                                        echo ('<ul class="navbar-nav ml-auto">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" href="Inicio.php">Inicio<span class="sr-only">(current)</span></a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="Reserva.php">Reserva</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="../backend/agenda/Sesiones/sesion_destruir.php">Salida</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link">'.$_SESSION["proyecto_usuario"].'</a>
+                                                    </li>
+                                               </ul>');
+                                    }
+                                ?>
                                 
                               <!-- Menu: F -->
                                 
@@ -115,7 +133,13 @@
                             <div class="row tm-banner-row tm-banner-row-header">
                                 <div class="col-xs-12">
                                     <div class="tm-banner-header">
-                                        <h1 class="text-uppercase tm-banner-title">Empieza tu reserva</h1>
+                                        <?php
+                                            if (!(isset($_SESSION["proyecto_usuario"])) && !(isset($_SESSION["proyecto_tipo_usuario"]))) {
+                                                echo ('<h1 class="text-uppercase tm-banner-title">Empieza tu reserva</h1>');
+                                            }else{
+                                                echo ('<h1 class="text-uppercase tm-banner-title">Empieza tu reserva '.$_SESSION["proyecto_usuario"].'</h1>');
+                                            }
+                                        ?>
                                         <p class="tm-banner-subtitle">Estamos para hacer tus vuelos confiables y comodos.</p>     
                                     </div>    
                                 </div>                      
@@ -137,11 +161,17 @@
                                             <label for="inputCity">Vuelo</label>
                                             <input type="text" class="form-control" id="txtVuelo" placeholder="Vuelo a elegir..." readonly>
                                             <label for="inputCity">Usuario</label>
-                                            <input type="text" class="form-control" id="txtUsuario" placeholder="Reserva del usuario...">       
+                                            <?php
+                                            if (!(isset($_SESSION["proyecto_usuario"])) && !(isset($_SESSION["proyecto_tipo_usuario"]))) {
+                                                echo ('<input type="text" class="form-control" id="txtUsuario" placeholder="Reserva del usuario..."readonly>');
+                                            }else{
+                                                echo ('<input type="text" class="form-control" id="txtUsuario" value="'.$_SESSION["proyecto_usuario"].'" readonly>');
+                                            }
+                                            ?>
                                             <label for="inputRoom">Numero de la Fila</label>
                                             <input type="text" class="form-control" id="txtFila" placeholder="Numero de fila" readonly>                                                                       
-                                            <label for="inputAdult">Letra del Asiento</label>     
-                                            <input type="text" class="form-control" id="txtAsiento" placeholder="Letra del asiento" readonly>  
+                                            <label for="inputAdult">Numero del Asiento</label>     
+                                            <input type="text" class="form-control" id="txtAsiento" placeholder="Numero del asiento" readonly>  
                                              
                                         </div>
                                         

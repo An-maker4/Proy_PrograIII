@@ -16,7 +16,7 @@ class ReservasDao {
         $this->labAdodb->setCharset('utf8');
         $this->labAdodb->setConnectionParameter('CharacterSet', 'WE8ISO8859P15');
         $this->labAdodb->Connect("localhost:8000", "root", "annyanneko", "mydb");
-        
+        $this->labAdodb->debug=false;
     }
     
     //agrega a la base de datos
@@ -88,12 +88,12 @@ class ReservasDao {
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
-
-            $valores["idReservacion"]          = $reserva->getIdReserva();
+        
             $valores["Numero_Fila"]            = $reserva->getNumero_Fila();
             $valores["Numero_Asientos"]        = $reserva->getNumero_Asiento();
             $valores["Vuelo_id_Vuelo"]         = $reserva->getVuelo();
             $valores["Persona_Usuario1"]       = $reserva->getUsuario();
+            $valores["idReservacion"]          = $reserva->getIdReserva();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
             throw new Exception('No se pudo actualizar el registro (Error generado en el metodo update de la clase ReservasDao), error:'.$e->getMessage());

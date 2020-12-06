@@ -1,4 +1,6 @@
 <?php
+session_name("proyecto");
+session_start();
 ?>
 <!DOCTYPE html>
     <html lang="en">
@@ -95,7 +97,7 @@
                                 
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="Inicio.php#top">Salida<span class="sr-only">(current)</span></a>
+                                        <a class="nav-link active" href="Inicio.php#top">Regreso<span class="sr-only">(current)</span></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="Admin_Registro.php">Registro</a>
@@ -108,6 +110,11 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="Admin_Avion.php">Aviones</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <?php
+                                        echo('<a class="nav-link">'.$_SESSION["proyecto_usuario"].'</a>');
+                                        ?>
                                     </li>
                                 </ul>
                                 
@@ -167,8 +174,8 @@
                                             <input type="text" class="form-control" id="txtUsuario" placeholder="Reserva del usuario...">       
                                             <label for="inputRoom">Numero de la Fila</label>
                                             <input type="text" class="form-control" id="txtFila" placeholder="Numero de la fila">                                                                       
-                                            <label for="inputAdult">Letra del Asiento</label>     
-                                            <input type="text" class="form-control" id="txtAsiento" placeholder="Letra del asiento">  
+                                            <label for="inputAdult">Numero del Asiento</label>     
+                                            <input type="text" class="form-control" id="txtAsiento" placeholder="Numero del asiento">  
                                              
                                         </div>
                                         
