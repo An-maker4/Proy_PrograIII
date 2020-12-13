@@ -103,7 +103,7 @@ if (filter_input(INPUT_POST, 'action') != null) {
                         $_SESSION["proyecto_usuario"] = $myPersonas->getUsuario(); 
                         $_SESSION["proyecto_tipo_usuario"] = $myPersonas->getTipo_Usuario();
                     }else{
-                        echo('E~Usuairio y/o contrasena invalidos');
+                        echo('E~Usuario y/o contrasena invalidos');
                     }
                 } else {
                     echo('E~NO Existe un usuario con el ID especificado');

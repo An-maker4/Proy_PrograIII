@@ -51,6 +51,10 @@ session_start();
     
     <body>
         
+         <?php
+        if ((isset($_SESSION["proyecto_usuario"])) && (isset($_SESSION["proyecto_tipo_usuario"]))) {
+        echo ('
+            
         <!-- Modal: I -->
         
         <div class="modal fade" id="myModal" role="dialog">             <!-- div1-1 -->
@@ -112,9 +116,7 @@ session_start();
                                         <a class="nav-link" href="Admin_Avion.php">Aviones</a>
                                     </li>
                                     <li class="nav-item">
-                                        <?php
-                                        echo('<a class="nav-link">'.$_SESSION["proyecto_usuario"].'</a>');
-                                        ?>
+                                        <a class="nav-link">'.$_SESSION["proyecto_usuario"].'</a>
                                     </li>
                                 </ul>
                                 
@@ -311,6 +313,11 @@ session_start();
         <script type="text/javascript" src="js/FunctionsReservas2.js"></script>
         
     <!-- Documentos JS: F  -->
+         
+        ');}else{
+            echo('<h1>No tiene acceso</h1>');
+        }
+    ?>
 
     </body>
     
