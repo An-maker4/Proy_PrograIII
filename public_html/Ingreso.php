@@ -120,7 +120,7 @@
                             <div class="row tm-banner-row tm-banner-row-header">
                                 <div class="col-xs-12">
                                     <div class="tm-banner-header">
-                                        <h1 class="text-uppercase tm-banner-title">Registro usuario</h1>
+                                        <h1 class="text-uppercase tm-banner-title">Ingreso de usuarios</h1>
                                         <p class="tm-banner-subtitle">Gracias por preferirnos, esperamos que tenga una buena experiencia.</p>
                                     </div>    
                                 </div>                      
