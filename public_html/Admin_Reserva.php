@@ -53,6 +53,7 @@ session_start();
         
          <?php
         if ((isset($_SESSION["proyecto_usuario"])) && (isset($_SESSION["proyecto_tipo_usuario"]))) {
+            if($_SESSION["proyecto_tipo_usuario"]=="2"){
         echo ('
             
         <!-- Modal: I -->
@@ -314,7 +315,7 @@ session_start();
         
     <!-- Documentos JS: F  -->
          
-        ');}else{
+            ');}}else{
             echo('<h1>No tiene acceso</h1>');
         }
     ?>
