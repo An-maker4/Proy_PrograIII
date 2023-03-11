@@ -1,4 +1,4 @@
-<?html
+<?php
 session_name("proyecto");
 session_start();
 ?>
